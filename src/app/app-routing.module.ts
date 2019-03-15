@@ -1,7 +1,37 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { PostComponent } from './components/post/post.component';
+import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
+import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
+import { NgModule, Component } from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OrganizationComponent } from './components/organization/organization.component';
+import { AddOrganizationComponent } from './components/add-organization/add-organization.component';
+import { CampaignComponent } from './components/campaign/campaign.component';
+import { AddCampaignComponent } from './components/add-campaign/add-campaign.component';
 
-const routes: Routes = [];
+const routes: Route[] = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'forgot-pass', component: ForgotPassComponent },
+  { path: 'app', redirectTo: '/app/dashboard', pathMatch: 'full' },
+  { path: 'app',
+    component: MainComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'organizations', component: OrganizationComponent },
+      { path: 'add-organization', component: AddOrganizationComponent },
+      { path: 'campaigns', component: CampaignComponent },
+      { path: 'posts', component: PostComponent },
+      { path: 'add-post', component: AddPostComponent },
+      { path: 'add-campaign', component: AddCampaignComponent }
+
+
+    ]
+  },
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

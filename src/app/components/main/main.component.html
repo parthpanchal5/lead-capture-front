@@ -1,0 +1,11 @@
+<app-navbar [profile]="profile"></app-navbar>
+<swal [options]="{ showConfirmButton: false,
+  position: 'top-end',
+  toast: true,
+  timer: 3500 }"
+  #loginAlertMsg
+  title="{{message.title}}"
+  text="{{message.message}}"
+  type="{{message.type}}" >
+</swal>
+<router-outlet></router-outlet>

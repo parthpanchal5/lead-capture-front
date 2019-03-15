@@ -1,0 +1,18 @@
+.example-icon{
+  padding: 0 31px;
+  cursor: pointer;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+#menus{
+  color: white;
+  font-size: 15px;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+#menu-items, a{
+  color: black;
+}

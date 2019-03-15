@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mt-4 pt-5">
+      <form>
+        <mat-card class="shadow-lg">
+          <mat-card-title class="text-center">Add Post</mat-card-title><hr>
+          <mat-card-content class="mt-2 pt-2">
+            <div class="example-container">
+              
+              <mat-form-field class="example-full-width" appearance="standard">
+                <mat-label>Enter Post Title <span class="text-danger">*</span></mat-label>
+                <input matInput autocomplete="off" type="email">
+              </mat-form-field><br>
+              
+              <mat-form-field class="example-full-width">
+                <mat-label>Enter Post Description <span class="text-danger">*</span></mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field><br>
+              
+              <label for="singleFile">Post Img / Video <span class="text-danger">*</span></label>
+              <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/><br>
+              <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'">
+                <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+              </mat-file-upload-queue>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Enter Post Content <span class="text-danger">*</span></mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field><br>
+
+              <mat-form-field class="example-full-width" appearance="standard">
+                <mat-label>Enter Post Remark <span class="text-danger">*</span></mat-label>
+                <input matInput autocomplete="off" type="email">
+              </mat-form-field><br>
+            
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button type="submit" mat-raised-button color="primary" class="mb-3 ml-3"> Add Post</button>
+            <a routerLink="/app/posts" mat-raised-button class="btn float-right mr-3">Cancel</a>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
