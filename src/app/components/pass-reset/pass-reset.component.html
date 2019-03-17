@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mt-5 pt-5">
+      <mat-card class="shadow-lg">
+        <mat-card-title class="text-center">Reset Password</mat-card-title><hr>
+        <mat-card-content class="mt-2 pt-2">
+         <form>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Enter Current</mat-label>
+              <input matInput autocomplete="off" type="email">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Enter New Password</mat-label>
+              <input matInput autocomplete="off" type="email">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Confirm New Password</mat-label>
+              <input matInput autocomplete="off" type="email">
+            </mat-form-field>
+            <button type="submit" class="mt-2 mb-4" mat-raised-button	color="primary">Submit</button>
+            <a routerLink="/app/dashboard" mat-raised-button	color="secondary" class="btn text-muted ml-4">Cancel</a>
+         </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

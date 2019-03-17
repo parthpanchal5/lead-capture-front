@@ -28,7 +28,7 @@
               </mat-form-field>
             </td>
             <td class="button-row">
-              <a routerLink="edit-org" mat-mini-fab color=""><mat-icon class="text-primary">edit</mat-icon></a> 
+              <a [routerLink]="['/app/organization-detail',organization.id]" mat-mini-fab color=""><mat-icon class="text-primary">edit</mat-icon></a> 
               <a (click)="deleteOrg(organization.id)" mat-mini-fab color=""><mat-icon  class="text-danger">delete</mat-icon></a> 
              
             </td>

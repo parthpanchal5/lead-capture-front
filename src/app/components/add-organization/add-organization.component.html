@@ -4,30 +4,30 @@
     <div class="col-md-6 mt-4 pt-5">
       <form>
         <mat-card class="shadow-lg">
-          <mat-card-title class="text-center">Add Organization</mat-card-title><hr>
+          <mat-card-title class="text-center">{{formTitle}}</mat-card-title><hr>
           <mat-card-content class="mt-2 pt-2">
             <div class="example-container">
               
               <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Enter Organization Name</mat-label>
-                <input matInput autocomplete="off" type="email">
+                <input matInput autocomplete="off" [(ngModel)]="orgData.org_name" name="org_name" type="text">
               </mat-form-field><br>
               
               <mat-form-field class="example-full-width">
                 <mat-label>Enter Organization Desc</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput [(ngModel)]="orgData.org_desc" name="org_desc"></textarea>
               </mat-form-field><br>
-              
+<!--               
               <label for="singleFile">Organization Logo</label>
               <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/><br>
               <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'">
                 <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-              </mat-file-upload-queue>
+              </mat-file-upload-queue> -->
             
             </div>
           </mat-card-content>
           <mat-card-actions>
-            <button type="submit" mat-raised-button color="primary" class="mb-3 ml-3"> Add Organization</button>
+            <button type="submit" mat-raised-button color="primary"  [disabled]="formBtn==='Loading...'" (click)="addOrg()" class="mb-3 ml-3">{{formBtn}}</button>
             <a routerLink="/app/organizations" mat-raised-button class="btn float-right mr-3">Cancel</a>
           </mat-card-actions>
         </mat-card>

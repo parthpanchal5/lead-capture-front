@@ -1,3 +1,4 @@
+import { OrganizationDetailComponent } from './components/add-organization/organization-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +28,8 @@ import { OrgFilterComponent } from './components/org-filter/org-filter.component
 import { PostComponent } from './components/post/post.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddCampaignComponent } from './components/add-campaign/add-campaign.component';
+import { PassResetComponent } from './components/pass-reset/pass-reset.component';
+import { TableComponent } from './components/table/table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,10 @@ import { AddCampaignComponent } from './components/add-campaign/add-campaign.com
     OrgFilterComponent,
     PostComponent,
     AddPostComponent,
-    AddCampaignComponent
+    AddCampaignComponent,
+    PassResetComponent,
+    OrganizationDetailComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

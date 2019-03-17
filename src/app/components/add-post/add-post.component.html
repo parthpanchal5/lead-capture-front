@@ -10,7 +10,7 @@
               
               <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Enter Post Title <span class="text-danger">*</span></mat-label>
-                <input matInput autocomplete="off" type="email">
+                <input matInput autocomplete="off" type="text">
               </mat-form-field><br>
               
               <mat-form-field class="example-full-width">
@@ -37,7 +37,7 @@
             </div>
           </mat-card-content>
           <mat-card-actions>
-            <button type="submit" mat-raised-button color="primary" class="mb-3 ml-3"> Add Post</button>
+            <button type="submit" mat-raised-button color="primary" (click)="addPost()" class="mb-3 ml-3"> Add Post</button>
             <a routerLink="/app/posts" mat-raised-button class="btn float-right mr-3">Cancel</a>
           </mat-card-actions>
         </mat-card>

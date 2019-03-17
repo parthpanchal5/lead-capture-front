@@ -23,7 +23,14 @@ export class OrganizationsService {
   // Individual Organization
   public getOrganizationDtl(id) {
     return this.http
-      .get<{status: boolean, message: string, data: {}}>(API_URL + '/organizations/' + id + '?auth=' + this.token.getToken());
+      .get<{
+        status: boolean,
+        message: string,
+        data: {
+          org_name: string,
+          org_desc: string
+        }
+      }>(API_URL + '/organization/' + id + '?auth=' + this.token.getToken());
   }
 
   // Insert organizations

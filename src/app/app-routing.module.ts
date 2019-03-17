@@ -1,3 +1,5 @@
+import { OrganizationDetailComponent } from './components/add-organization/organization-detail.component';
+import { PassResetComponent } from './components/pass-reset/pass-reset.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { PostComponent } from './components/post/post.component';
 import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
@@ -22,12 +24,12 @@ const routes: Route[] = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'organizations', component: OrganizationComponent },
       { path: 'add-organization', component: AddOrganizationComponent },
+      { path: 'organization-detail/:id', component: OrganizationDetailComponent },
       { path: 'campaigns', component: CampaignComponent },
       { path: 'posts', component: PostComponent },
       { path: 'add-post', component: AddPostComponent },
-      { path: 'add-campaign', component: AddCampaignComponent }
-
-
+      { path: 'add-campaign', component: AddCampaignComponent },
+      { path: 'pass-reset', component: PassResetComponent }
     ]
   },
 
