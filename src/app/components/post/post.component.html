@@ -6,7 +6,7 @@
       <table class="table table-hover table-striped table-bordered">
         <thead>
           <tr>
-            <th># Sr.no</th>
+            <th style="max-width: 50px; text-align: center;"># Sr.no</th>
             <th>Post Name</th>
             <th>Post Desc</th>
             <th>Post Type</th>
@@ -17,28 +17,32 @@
         </thead>
         <tbody>
           <tr *ngFor="let post of posts">
-            <td>{{ post.id }}</td>
+            <td style="max-width: 14px; text-align: center;"> {{ post.id }}</td>
             <td>{{ post.title }}</td>
             <td>{{ post.post_desc }}</td>
             <td>{{ post.post_type }}</td>
             <td>{{ post.post_content }}</td>
-            <td>
+            <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">
-                  <mat-option *ngFor="let status of statuses" [value]="status.value">
-                    {{status.viewValue}}
-                  </mat-option>
+                  <mat-option value="1">Enable</mat-option>
+                  <mat-option value="-1">Disable</mat-option>
                 </mat-select>
               </mat-form-field>
             </td>
             <td class="button-row">
-              <a routerLink="edit-org" mat-mini-fab color=""><mat-icon class="text-primary">edit</mat-icon></a> 
-              <a (click)="deletePost(post.id)" mat-mini-fab color=""><mat-icon  class="text-danger">delete</mat-icon></a> 
-             
+              <a [routerLink]="['/app/post-detail', post.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
+              <a (click)="deletePost(post.id)" style="cursor: pointer;"><mat-icon class="text-danger">delete_outline</mat-icon></a> 
             </td>
           </tr>
           <tr *ngIf="posts.length<=0">
             <th class="text-center" colspan="7"><h4>No Records</h4></th>
+          </tr>
+          <tr>
+            <td colspan="8">
+              <mat-paginator [hidePageSize]='0'  [length]="posts.total"
+              [pageSize]="posts.limit" [pageIndex]="posts.page-1" (page)="pageEvent = PageHandler($event)"></mat-paginator>
+            </td>
           </tr>
         </tbody>
       </table>

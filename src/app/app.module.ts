@@ -15,6 +15,8 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddCampaignComponent } from './components/add-campaign/add-campaign.component';
 import { PassResetComponent } from './components/pass-reset/pass-reset.component';
 import { PostComponent } from './components/post/post.component';
+import { CampaignDetailComponent } from './components/add-campaign/campaign-detail.component';
+import { PostDetailComponent } from './components/add-post/post-detail.component';
 
 // Module
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,6 +52,8 @@ import { TokenService } from './token';
     AddCampaignComponent,
     PassResetComponent,
     OrganizationDetailComponent,
+    CampaignDetailComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,

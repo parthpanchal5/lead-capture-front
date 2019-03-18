@@ -16,14 +16,24 @@ export class PostService {
   ) { }
 
   // List all post
-  public getPosts() {
+  public getPosts(search) {
     return this.http
-      .get<{status: boolean, message: string, data: []}>(API_URL + '/posts?auth=' + this.token.getToken());
+      .get<{status: boolean, message: string, data: []}>(API_URL + '/posts?auth=' + this.token.getToken() + search);
   }
   // Individual post
   public getPostDtl(id) {
     return this.http
-      .get<{status: boolean, message: string, data: {}}>(API_URL + '/post/' + id + '?auth=' + this.token.getToken());
+      .get<{
+        status: boolean,
+        message: string,
+        data: {
+          title: string,
+          post_desc: string,
+          post_type: string,
+          post_content: string,
+          remark: string
+        }
+      }>(API_URL + '/post/' + id + '?auth=' + this.token.getToken());
   }
 
   // Insert post

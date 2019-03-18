@@ -1,6 +1,8 @@
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrganizationsService } from 'src/app/services/organizations.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-organization',
@@ -13,7 +15,9 @@ export class OrganizationComponent implements OnInit {
 
   constructor(
     private organizationService: OrganizationsService,
-    private mainComponent: MainComponent) { }
+    private mainComponent: MainComponent,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.getOrganizations(1);
@@ -45,6 +49,7 @@ export class OrganizationComponent implements OnInit {
       console.log('data: ', data);
       if (data.status) {
         this.mainComponent.alertMessage({title: 'Deleted', message: data.message, type: 'success'});
+        this.router.navigate(['/app/organizations']);
         this.organizations = this.organizations.filter((item) => {
           return item.id !== id;
         });

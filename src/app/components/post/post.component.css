@@ -1,0 +1,10 @@
+#option {
+  width: 20px;
+}
+mat-select{
+  font-size: 15px;    
+}
+mat-select mat-option{
+  width: 14px;
+  margin-bottom: 10px;
+}

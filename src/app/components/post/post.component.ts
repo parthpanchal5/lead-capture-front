@@ -17,20 +17,17 @@ export interface Status {
 export class PostComponent implements OnInit {
 
   posts = [];
-  statuses: Status[] = [
-    {value: 'enable', viewValue: 'Enable' },
-    {value: 'disable', viewValue: 'Disable' }
 
-  ];
   constructor(private postService: PostService, private mainComponent: MainComponent) { }
 
   ngOnInit() {
-    this.getPosts();
+    this.getPosts(1);
   }
 
    // Get all Orgaizations
-   public getPosts() {
-    this.postService.getPosts().subscribe((data) => {
+   public getPosts(page) {
+    const queryTmp = '&page=' + ( (page) ? page : 1 );
+    this.postService.getPosts(queryTmp).subscribe((data) => {
       console.log('data: ', data);
       if (data.status) {
         this.posts = data.data;
@@ -40,6 +37,10 @@ export class PostComponent implements OnInit {
     }, error => {
       console.log('Error: ', error);
     });
+  }
+   // Pagination
+   public PageHandler(event) {
+    this.getPosts(event.pageIndex + 1);
   }
 
   // Delete organization

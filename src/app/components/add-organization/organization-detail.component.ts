@@ -11,14 +11,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class OrganizationDetailComponent implements OnInit {
 
   formBtn = 'Update Organization';
-
   formTitle = 'Organization Detail';
+
   id = '';
 
   orgData = {
     org_name: '',
     org_desc: ''
   };
+
   constructor(
     private mainComponent: MainComponent,
     private organizationService: OrganizationsService,
@@ -33,7 +34,7 @@ export class OrganizationDetailComponent implements OnInit {
 
   getOrganizationDtl(id) {
     this.organizationService.getOrganizationDtl(id).subscribe((data) => {
-      console.log('data: ', data);
+      console.log('Data: ', data);
       if (data.status) {
         this.orgData = data.data;
       } else {
@@ -41,7 +42,7 @@ export class OrganizationDetailComponent implements OnInit {
           org_name: '',
           org_desc: ''
         };
-        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Success'});
+        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Error'});
       }
     }, error => {
       console.log('Error: ', error);
@@ -75,9 +76,9 @@ export class OrganizationDetailComponent implements OnInit {
       }
       this.formBtn = 'Update Organization';
     }, error => {
-      console.log('Error: ', error);
-      this.formBtn = 'Update Organization';
-    });
-  }
+        console.log('Error: ', error);
+        this.formBtn = 'Update Organization';
+      });
+    }
 
 }

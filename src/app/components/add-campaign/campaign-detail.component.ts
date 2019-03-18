@@ -1,17 +1,20 @@
-import { CampaignService } from 'src/app/services/campaign.service';
+import { CampaignService } from './../../services/campaign.service';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-add-campaign',
+  selector: 'app-campaign-detail',
   templateUrl: './add-campaign.component.html',
   styleUrls: ['./add-campaign.component.css']
 })
-export class AddCampaignComponent implements OnInit {
+export class CampaignDetailComponent implements OnInit {
 
-  formBtn = 'Create Campaign';
-  formTitle = 'Add Campaign';
+  formBtn = 'Update Campaign';
+
+  formTitle = 'Campaign Detail';
+
+  id = '';
 
   campaignData = {
     title: '',
@@ -23,15 +26,36 @@ export class AddCampaignComponent implements OnInit {
   constructor(
     private mainComponent: MainComponent,
     private campaignService: CampaignService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.getCampaignDtl(this.id);
+  }
+
+  getCampaignDtl(id) {
+    this.campaignService.getCampaignDtl(id).subscribe((data) => {
+      console.log('data: ', data);
+      if (data.status) {
+        this.campaignData = data.data;
+      } else {
+        this.campaignData = {
+          title: '',
+          camp_desc: '',
+          landing_page_url: '',
+          remark: ''
+        };
+        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Error'});
+      }
+    }, error => {
+      console.log('Error: ', error);
+    });
   }
 
   addCamp() {
     const formdata = new FormData();
-
     if (this.campaignData.title === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please enter campaign title', title: 'Required:'});
       return;
@@ -56,19 +80,22 @@ export class AddCampaignComponent implements OnInit {
     } else {
       formdata.append('remark', this.campaignData.remark);
     }
+    formdata.append('id', this.id);
     this.formBtn = 'Loading...';
+
     this.campaignService.postCampaign(formdata).subscribe((data) => {
-      console.log('Data: ', data);
+      console.log('data: ', data);
       if (data.status) {
         this.mainComponent.alertMessage({type: 'success', message: data.message, title: 'Success'});
         this.router.navigate(['/app/campaigns']);
       } else {
-        this.mainComponent.alertMessage({type: 'alert', message:  data.message, title: 'Error'});
+        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Success'});
       }
-      this.formBtn = 'Create Campaign';
+      this.formBtn = 'Update Campaign';
     }, error => {
       console.log('Error: ', error);
-      this.formBtn = 'Create Campaign';
+      this.formBtn = 'Update Campaign';
     });
   }
+
 }

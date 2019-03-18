@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row mt-5">
     <div class="col-md-12">
-      <a routerLink="/app/add-campaign" mat-raised-button color="primary" class="btn float-right mb-4"><mat-icon>add</mat-icon> Add Campaigns</a>
+      <a routerLink="/app/add-campaign" mat-raised-button color="primary" class="btn float-right mb-4"><mat-icon>add</mat-icon> Create Campaign</a>
       <a routerLink="org-filters" mat-raised-button color="warn" class="btn float-right mr-4"><mat-icon>filter_list</mat-icon> Filters</a>
       <table class="table table-hover table-striped table-bordered">
         <thead>
           <tr>
-            <th># Sr.no</th>
+            <th style="max-width: 50px; text-align: center;"># Sr.no</th>
             <th>Campaign Name</th>
             <th>Campaign Desc</th>
             <th>Landing Page URL</th>
@@ -16,14 +16,14 @@
         </thead>
         <tbody>
           <tr *ngFor="let campaign of campaigns.docs; let i = index">
-            <td>{{ ((campaigns.page-1)*campaigns.limit)+(i+1) }}</td>
+            <td style="max-width: 14px; text-align: center;">{{ ((campaigns.page-1)*campaigns.limit)+(i+1) }}</td>
             <td>{{ campaign.title }}</td>
             <td>{{ campaign.camp_desc }}</td>
             <td>{{ campaign.landing_page_url }}</td>
             <td>{{ campaign.remark }}</td>
             <td class="button-row">
-              <a routerLink="edit-org"><mat-icon class="text-primary">launch</mat-icon></a> 
-              <a (click)="deleteCamp(campaign.id)"><mat-icon  class="text-danger">delete_outline</mat-icon></a> 
+              <a [routerLink]="['/app/campaign-detail',campaign.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
+              <a (click)="deleteCamp(campaign.id)" style="cursor: pointer;"><mat-icon  class="text-danger">delete_outline</mat-icon></a> 
             </td>
           </tr>
           <tr>

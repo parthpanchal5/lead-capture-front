@@ -21,9 +21,17 @@ export class CampaignService {
       .get<{status: boolean, message: string, data: []}>(API_URL + '/campaigns?auth=' + this.token.getToken() + search);
   }
   // Individual campaigns
-  public getCamapignDtl(id) {
+  public getCampaignDtl(id) {
     return this.http
-      .get<{status: boolean, message: string, data: {}}>(API_URL + '/campaign/' + id + '?auth=' + this.token.getToken());
+      .get<{
+        status: boolean,
+        message: string,
+        data: {
+          title: string,
+          camp_desc: string,
+          landing_page_url: string,
+          remark: string
+        }}>(API_URL + '/campaign/' + id + '?auth=' + this.token.getToken());
   }
 
   // Insert campaign

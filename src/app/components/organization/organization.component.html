@@ -28,8 +28,7 @@
             </td>
             <td class="button-row">
               <a [routerLink]="['/app/organization-detail',organization.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
-              <a (click)="deleteOrg(organization.id)"><mat-icon  class="text-danger">delete_outline</mat-icon></a> 
-             
+              <a (click)="deleteOrg(organization.id)" style="cursor: pointer;"><mat-icon  class="text-danger">delete_outline</mat-icon></a>     
             </td>
           </tr>
           <tr *ngIf="organizations.length<=0">
