@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <a routerLink="/app/add-organization" mat-raised-button color="primary" class="float-right mb-4"><mat-icon>add</mat-icon> Add Organization</a>
       <a  mat-raised-button color="warn" class="float-right mr-4"><mat-icon>filter_list</mat-icon> Filters</a>
-      <table class="table table-hover table-striped table-bordered">
+      <table class="table table-striped table-bordered">
         <thead>
           <tr>
             <th># Sr.no</th>
@@ -14,27 +14,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let organization of organizations">
-            <td>{{ organization.id }}</td>
+          <tr *ngFor="let organization of organizations.docs; let i = index">
+            <td>{{ ((organizations.page-1)*organizations.limit)+(i+1) }}</td>
             <td>{{ organization.org_name }}</td>
             <td><a routerLink="/app/campaigns">{{ organization.campaigns }}</a> - Campaign</td>
-            <td>
+            <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">
-                  <mat-option *ngFor="let status of statuses" [value]="status.value">
-                    {{status.viewValue}}
-                  </mat-option>
+                  <mat-option value="1">Enable</mat-option>
+                  <mat-option value="-1">Disable</mat-option>
                 </mat-select>
               </mat-form-field>
             </td>
             <td class="button-row">
-              <a [routerLink]="['/app/organization-detail',organization.id]" mat-mini-fab color=""><mat-icon class="text-primary">edit</mat-icon></a> 
-              <a (click)="deleteOrg(organization.id)" mat-mini-fab color=""><mat-icon  class="text-danger">delete</mat-icon></a> 
+              <a [routerLink]="['/app/organization-detail',organization.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
+              <a (click)="deleteOrg(organization.id)"><mat-icon  class="text-danger">delete_outline</mat-icon></a> 
              
             </td>
           </tr>
           <tr *ngIf="organizations.length<=0">
             <th class="text-center" colspan="5"><h4>No Records</h4></th>
+          </tr>
+          <tr>
+            <td colspan="6">
+              <mat-paginator [hidePageSize]='0'  [length]="organizations.total"
+              [pageSize]="organizations.limit" [pageIndex]="organizations.page-1" (page)="pageEvent = PageHandler($event)"></mat-paginator>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -7,6 +7,7 @@ import * as Material from '@angular/material';
 
 @NgModule({
   imports: [
+    CommonModule,
     Material.MatButtonModule,
     Material.MatCheckboxModule,
     Material.MatRippleModule,
@@ -18,7 +19,9 @@ import * as Material from '@angular/material';
     Material.MatTableModule,
     Material.MatDatepickerModule,
     Material.MatProgressSpinnerModule,
-    Material.MatSelectModule
+    Material.MatGridListModule,
+    Material.MatSelectModule,
+    Material.MatPaginatorModule
   ],
 
   exports: [
@@ -32,8 +35,11 @@ import * as Material from '@angular/material';
     Material.MatCardModule,
     Material.MatTableModule,
     Material.MatDatepickerModule,
+    Material.MatGridListModule,
     Material.MatProgressSpinnerModule,
-    Material.MatSelectModule
+    Material.MatSelectModule,
+    Material.MatPaginatorModule
+
   ],
 })
 export class MaterialModule { }

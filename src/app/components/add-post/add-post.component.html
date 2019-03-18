@@ -10,34 +10,39 @@
               
               <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Enter Post Title <span class="text-danger">*</span></mat-label>
-                <input matInput autocomplete="off" type="text">
+                <input matInput autocomplete="off" [(ngModel)]="postData.title" name="title" type="text">
               </mat-form-field><br>
               
               <mat-form-field class="example-full-width">
                 <mat-label>Enter Post Description <span class="text-danger">*</span></mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput [(ngModel)]="postData.post_desc" name="post_desc"></textarea>
+              </mat-form-field><br>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Enter Post Type <span class="text-danger">*</span></mat-label>
+                <input type="text" matInput [(ngModel)]="postData.post_type" name="post_type">
               </mat-form-field><br>
               
-              <label for="singleFile">Post Img / Video <span class="text-danger">*</span></label>
+              <!-- <label for="singleFile">Post Img / Video <span class="text-danger">*</span></label>
               <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/><br>
               <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'">
                 <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-              </mat-file-upload-queue>
+              </mat-file-upload-queue> -->
 
               <mat-form-field class="example-full-width">
                 <mat-label>Enter Post Content <span class="text-danger">*</span></mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput [(ngModel)]="postData.post_content" name="post_content"></textarea>
               </mat-form-field><br>
 
               <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Enter Post Remark <span class="text-danger">*</span></mat-label>
-                <input matInput autocomplete="off" type="email">
+                <input matInput autocomplete="off"  [(ngModel)]="postData.remark" name="remark" type="text">
               </mat-form-field><br>
             
             </div>
           </mat-card-content>
           <mat-card-actions>
-            <button type="submit" mat-raised-button color="primary" (click)="addPost()" class="mb-3 ml-3"> Add Post</button>
+            <button type="submit" mat-raised-button color="primary" (click)="addPost()" class="mb-3 ml-3">{{formBtn}}</button>
             <a routerLink="/app/posts" mat-raised-button class="btn float-right mr-3">Cancel</a>
           </mat-card-actions>
         </mat-card>

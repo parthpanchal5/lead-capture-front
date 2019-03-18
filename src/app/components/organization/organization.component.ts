@@ -1,11 +1,6 @@
 import { MainComponent } from './../main/main.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrganizationsService } from 'src/app/services/organizations.service';
-
-export interface Status {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-organization',
@@ -15,21 +10,19 @@ export interface Status {
 export class OrganizationComponent implements OnInit {
 
   organizations = [];
-  statuses: Status[] = [
-    {value: 'enable', viewValue: 'Enable' },
-    {value: 'disable', viewValue: 'Disable' }
 
-  ];
-
-  constructor(private organizationService: OrganizationsService, private mainComponent: MainComponent) { }
+  constructor(
+    private organizationService: OrganizationsService,
+    private mainComponent: MainComponent) { }
 
   ngOnInit() {
-    this.getOrganizations();
+    this.getOrganizations(1);
   }
 
   // Get all Orgaizations
-  public getOrganizations() {
-    this.organizationService.getOrganizations().subscribe((data) => {
+  public getOrganizations(page) {
+    const queryTmp = '&page=' + ( (page) ? page : 1 );
+    this.organizationService.getOrganizations(queryTmp).subscribe((data) => {
       console.log('data: ', data);
       if (data.status) {
         this.organizations = data.data;
@@ -39,6 +32,11 @@ export class OrganizationComponent implements OnInit {
     }, error => {
       console.log('Error: ', error);
     });
+  }
+
+  // Pagination
+  public PageHandler(event) {
+    this.getOrganizations(event.pageIndex + 1);
   }
 
   // Delete organization

@@ -4,40 +4,40 @@
     <div class="col-md-6 mt-4 pt-5">
       <form>
         <mat-card class="shadow-lg">
-          <mat-card-title class="text-center">Add Campaign</mat-card-title><hr>
+          <mat-card-title class="text-center">{{formTitle}}</mat-card-title><hr>
           <mat-card-content class="mt-2 pt-2">
             <div class="example-container">
               
               <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Enter Campaign Title <span class="text-danger">*</span></mat-label>
-                <input matInput autocomplete="off" type="text">
+                <input matInput autocomplete="off" [(ngModel)]="campaignData.title" name="title" type="text">
               </mat-form-field><br>
               
               <mat-form-field class="example-full-width">
                 <mat-label>Enter Campaign Description <span class="text-danger">*</span></mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput name="camp_desc" [(ngModel)]="campaignData.camp_desc"></textarea>
               </mat-form-field><br>
 
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Enter Landing Page URL <span class="text-danger">*</span></mat-label>
-                <input matInput autocomplete="off" type="text">
+                <input matInput name="landing_page_url" [(ngModel)]="campaignData.landing_page_url" autocomplete="off" type="text">
               </mat-form-field><br>
 
               <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Enter Campaign Remark <span class="text-danger">*</span></mat-label>
-                <input matInput autocomplete="off" type="text">
+                <input matInput autocomplete="off" name="remark" type="text" [(ngModel)]="campaignData.remark">
               </mat-form-field><br>
               
-              <label for="singleFile">Post Img / Video</label>
+              <!-- <label for="singleFile">Post Img / Video</label>
               <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/><br>
               <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'">
                 <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-              </mat-file-upload-queue>
+              </mat-file-upload-queue> -->
             
             </div>
           </mat-card-content>
           <mat-card-actions>
-            <button type="submit" mat-raised-button color="primary" class="mb-3 ml-3"> Add Campaign</button>
+            <button type="submit" mat-raised-button color="primary" class="mb-3 ml-3" [disabled]="formBtn==='Loading...'" (click)="addCamp()">{{formBtn}}</button>
             <a routerLink="/app/campaigns" mat-raised-button class="btn float-right mr-3">Cancel</a>
           </mat-card-actions>
         </mat-card>

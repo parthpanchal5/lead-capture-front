@@ -7,23 +7,14 @@
           <mat-card-title class="text-center">{{formTitle}}</mat-card-title><hr>
           <mat-card-content class="mt-2 pt-2">
             <div class="example-container">
-              
               <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Enter Organization Name</mat-label>
                 <input matInput autocomplete="off" [(ngModel)]="orgData.org_name" name="org_name" type="text">
               </mat-form-field><br>
-              
               <mat-form-field class="example-full-width">
                 <mat-label>Enter Organization Desc</mat-label>
                 <textarea matInput [(ngModel)]="orgData.org_desc" name="org_desc"></textarea>
               </mat-form-field><br>
-<!--               
-              <label for="singleFile">Organization Logo</label>
-              <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/><br>
-              <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'">
-                <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-              </mat-file-upload-queue> -->
-            
             </div>
           </mat-card-content>
           <mat-card-actions>

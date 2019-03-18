@@ -16,9 +16,9 @@ export class OrganizationsService {
   ) { }
 
   // List all organizations
-  public getOrganizations() {
+  public getOrganizations(search) {
     return this.http
-      .get<{status: boolean, message: string, data: []}>(API_URL + '/organizations?auth=' + this.token.getToken());
+      .get<{status: boolean, message: string, data: []}>(API_URL + '/organizations?auth=' + this.token.getToken() + search);
   }
   // Individual Organization
   public getOrganizationDtl(id) {

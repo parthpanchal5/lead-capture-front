@@ -8,7 +8,7 @@ const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
-export class CamapaignService {
+export class CampaignService {
 
   constructor(
     public http: HttpClient,
@@ -16,9 +16,9 @@ export class CamapaignService {
   ) { }
 
   // List all campaign
-  public getCampaigns() {
+  public getCampaigns(search) {
     return this.http
-      .get<{status: boolean, message: string, data: []}>(API_URL + '/campaigns?auth=' + this.token.getToken());
+      .get<{status: boolean, message: string, data: []}>(API_URL + '/campaigns?auth=' + this.token.getToken() + search);
   }
   // Individual campaigns
   public getCamapignDtl(id) {

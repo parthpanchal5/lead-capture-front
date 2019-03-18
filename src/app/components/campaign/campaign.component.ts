@@ -1,6 +1,6 @@
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
-import { CamapaignService } from 'src/app/services/campaign.service';
+import { CampaignService } from 'src/app/services/campaign.service';
 
 @Component({
   selector: 'app-campaign',
@@ -10,15 +10,18 @@ import { CamapaignService } from 'src/app/services/campaign.service';
 export class CampaignComponent implements OnInit {
 
   campaigns = [];
-  constructor(private campaignService: CamapaignService, private mainComponent: MainComponent) { }
+  constructor(
+    private campaignService: CampaignService,
+    private mainComponent: MainComponent) { }
 
   ngOnInit() {
-    this.getCampaigns();
+    this.getCampaigns(1);
   }
 
-  //
-  public getCampaigns() {
-    this.campaignService.getCampaigns().subscribe((data) => {
+  // Get all Campaigns
+  public getCampaigns(page) {
+    const queryTmp = '&page=' + ( (page) ? page : 1 );
+    this.campaignService.getCampaigns(queryTmp).subscribe((data) => {
       console.log('data: ', data);
       if (data.status) {
         this.campaigns = data.data;
@@ -28,6 +31,11 @@ export class CampaignComponent implements OnInit {
     }, error => {
       console.log('Error: ', error);
     });
+  }
+
+  // Pagination
+  public PageHandler(event) {
+    this.getCampaigns(event.pageIndex + 1);
   }
 
   // Delete with id

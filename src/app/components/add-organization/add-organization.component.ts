@@ -17,6 +17,7 @@ export class AddOrganizationComponent implements OnInit {
     org_name: '',
     org_desc: ''
   };
+
   constructor(
     private mainComponent: MainComponent,
     private organizationService: OrganizationsService,
@@ -42,7 +43,7 @@ export class AddOrganizationComponent implements OnInit {
     }
     this.formBtn = 'Loading...';
     this.organizationService.postOrganization(formdata).subscribe((data) => {
-      console.log('data: ', data);
+      // console.log('data: ', data);
       if (data.status) {
         this.mainComponent.alertMessage({type: 'success', message: data.message, title: 'Success'});
         this.router.navigate(['/app/organizations']);

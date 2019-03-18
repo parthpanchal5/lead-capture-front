@@ -23,6 +23,7 @@ describe('AddOrganizationComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
 describe('OrganizationDetailComponent', () => {
   let component: OrganizationDetailComponent;
   let fixture: ComponentFixture<OrganizationDetailComponent>;
