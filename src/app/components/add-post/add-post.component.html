@@ -21,6 +21,12 @@
               <mat-form-field class="example-full-width">
                 <mat-label>Enter Post Type <span class="text-danger">*</span></mat-label>
                 <input type="text" matInput [(ngModel)]="postData.post_type" name="post_type">
+              </mat-form-field><br> 
+              
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Enter Post Link <span class="text-danger">*</span></mat-label>
+                <input type="text" matInput [(ngModel)]="postData.track_id" name="track_id">
+                <mat-icon matSuffix (click)="gen()" id="click-icon" color="warn">sync</mat-icon>
               </mat-form-field><br>
               
               <!-- <label for="singleFile">Post Img / Video <span class="text-danger">*</span></label>

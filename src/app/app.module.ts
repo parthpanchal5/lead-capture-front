@@ -33,7 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Services
 import { LoginService } from './services/login.service';
 import { TokenService } from './token';
-
+import { CommanService } from './services/comman.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { TokenService } from './token';
     FormsModule,
     SweetAlert2Module.forRoot()
   ],
-  providers: [LoginService, TokenService],
+  providers: [LoginService, TokenService, CommanService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
 import { CampaignService } from 'src/app/services/campaign.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-campaign',
@@ -10,18 +11,37 @@ import { CampaignService } from 'src/app/services/campaign.service';
 export class CampaignComponent implements OnInit {
 
   campaigns = [];
+  search = {
+    orgId: ''
+  };
+
   constructor(
     private campaignService: CampaignService,
-    private mainComponent: MainComponent) { }
+    private mainComponent: MainComponent,
+    private router: Router,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
-    this.getCampaigns(1);
+    const orgId = this.route.snapshot.paramMap.get('id');
+    console.log('Org id : ', orgId);
+    if ( orgId) {
+      this.search.orgId = orgId;
+    }
+    this.getCampaigns(1, this.search);
   }
 
   // Get all Campaigns
-  public getCampaigns(page) {
-    const queryTmp = '&page=' + ( (page) ? page : 1 );
-    this.campaignService.getCampaigns(queryTmp).subscribe((data) => {
+  public getCampaigns(page, search) {
+    const queryTmp = [''];
+    queryTmp.push('page=' + ( (page) ? page : 1 ));
+    if ( search ) {
+      if (search.orgId !== '' && search.orgId !== null) {
+        queryTmp.push('org_id=' + search.orgId);
+      }
+    }
+    console.log('query : ', queryTmp.join('&'));
+    this.campaignService.getCampaigns(queryTmp.join('&')).subscribe((data) => {
       console.log('data: ', data);
       if (data.status) {
         this.campaigns = data.data;
@@ -35,7 +55,7 @@ export class CampaignComponent implements OnInit {
 
   // Pagination
   public PageHandler(event) {
-    this.getCampaigns(event.pageIndex + 1);
+    this.getCampaigns(event.pageIndex + 1, this.search);
   }
 
   // Delete with id

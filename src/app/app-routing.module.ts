@@ -28,9 +28,11 @@ const routes: Route[] = [
       { path: 'add-organization', component: AddOrganizationComponent },
       { path: 'organization-detail/:id', component: OrganizationDetailComponent },
       { path: 'campaigns', component: CampaignComponent },
+      { path: 'organization/:id/campaigns', component: CampaignComponent },
       { path: 'campaign-detail/:id', component: CampaignDetailComponent },
       { path: 'post-detail/:id', component: PostDetailComponent },
       { path: 'posts', component: PostComponent },
+      { path: 'organization/:id/posts', component: PostComponent },
       { path: 'add-post', component: AddPostComponent },
       { path: 'add-campaign', component: AddCampaignComponent },
       { path: 'pass-reset', component: PassResetComponent }

@@ -21,7 +21,8 @@ import * as Material from '@angular/material';
     Material.MatProgressSpinnerModule,
     Material.MatGridListModule,
     Material.MatSelectModule,
-    Material.MatPaginatorModule
+    Material.MatPaginatorModule,
+    Material.MatDialogModule
   ],
 
   exports: [
@@ -38,8 +39,8 @@ import * as Material from '@angular/material';
     Material.MatGridListModule,
     Material.MatProgressSpinnerModule,
     Material.MatSelectModule,
-    Material.MatPaginatorModule
-
+    Material.MatPaginatorModule,
+    Material.MatDialogModule
   ],
 })
 export class MaterialModule { }

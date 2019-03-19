@@ -2,6 +2,7 @@ import { PostService } from './../../services/post.service';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CommanService } from 'src/app/services/comman.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -20,6 +21,7 @@ export class PostDetailComponent implements OnInit {
     title: '',
     post_desc: '',
     post_type: '',
+    track_id: '',
     post_content: '',
     remark: ''
   };
@@ -28,12 +30,18 @@ export class PostDetailComponent implements OnInit {
     private mainComponent: MainComponent,
     private postService: PostService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private commanService: CommanService
+
   ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getPostDtl(this.id);
+  }
+
+  gen() {
+    this.postData.track_id = this.commanService.randomString(6);
   }
 
   getPostDtl(id) {
@@ -46,6 +54,7 @@ export class PostDetailComponent implements OnInit {
           title: '',
           post_desc: '',
           post_type: '',
+          track_id: '',
           post_content: '',
           remark: ''
         };
@@ -77,6 +86,12 @@ export class PostDetailComponent implements OnInit {
     } else {
       formdata.append('post_type', this.postData.post_type);
     }
+    if (this.postData.track_id === '' ) {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post link'});
+      return;
+    } else {
+      formdata.append('track_id', this.postData.track_id);
+    }
     if (this.postData.post_content === '' ) {
       this.mainComponent.alertMessage({type: 'error', message: 'Please enter post type'});
       return;
@@ -89,9 +104,9 @@ export class PostDetailComponent implements OnInit {
     } else {
       formdata.append('remark', this.postData.remark);
     }
+
     formdata.append('id', this.id);
     this.formBtn = 'Loading...';
-
     this.postService.insPost(formdata).subscribe((data) => {
       console.log('Data: ', data);
       if (data.status) {

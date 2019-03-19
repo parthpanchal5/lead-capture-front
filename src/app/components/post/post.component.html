@@ -11,17 +11,19 @@
             <th>Post Desc</th>
             <th>Post Type</th>
             <th>Post Content</th>
+            <th>Post Link</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let post of posts">
-            <td style="max-width: 14px; text-align: center;"> {{ post.id }}</td>
+          <tr *ngFor="let post of posts.docs; let i = index">
+            <td style="max-width: 14px; text-align: center;"> {{ ((posts.page-1)*posts.limit)+(i+1) }}</td>
             <td>{{ post.title }}</td>
             <td>{{ post.post_desc }}</td>
             <td>{{ post.post_type }}</td>
             <td>{{ post.post_content }}</td>
+            <td>link</td>
             <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">

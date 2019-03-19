@@ -1,12 +1,7 @@
 import { PostService } from './../../services/post.service';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
-
-
-export interface Status {
-  value: string;
-  viewValue: string;
-}
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,17 +12,37 @@ export interface Status {
 export class PostComponent implements OnInit {
 
   posts = [];
+  search = {
+    orgId: ''
+  };
 
-  constructor(private postService: PostService, private mainComponent: MainComponent) { }
+  constructor(
+    private postService: PostService,
+    private mainComponent: MainComponent,
+    private router: Router,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
-    this.getPosts(1);
+    const orgId = this.route.snapshot.paramMap.get('id');
+    console.log('Org id: ', orgId);
+    if ( orgId) {
+      this.search.orgId = orgId;
+    }
+    this.getPosts(1, this.search);
   }
 
    // Get all Orgaizations
-   public getPosts(page) {
-    const queryTmp = '&page=' + ( (page) ? page : 1 );
-    this.postService.getPosts(queryTmp).subscribe((data) => {
+   public getPosts(page, search) {
+    const queryTmp = [''];
+    queryTmp.push('page=' + ( (page) ? page : 1 ));
+    if (search) {
+      if (search.orgId !== '' && search.orgId !== null) {
+        queryTmp.push('org_id=' + search.orgId);
+      }
+    }
+
+    this.postService.getPosts(queryTmp.join('&')).subscribe((data) => {
       console.log('data: ', data);
       if (data.status) {
         this.posts = data.data;
@@ -40,7 +55,7 @@ export class PostComponent implements OnInit {
   }
    // Pagination
    public PageHandler(event) {
-    this.getPosts(event.pageIndex + 1);
+    this.getPosts(event.pageIndex + 1, this.search);
   }
 
   // Delete organization

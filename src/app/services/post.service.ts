@@ -30,6 +30,7 @@ export class PostService {
           title: string,
           post_desc: string,
           post_type: string,
+          track_id: string,
           post_content: string,
           remark: string
         }

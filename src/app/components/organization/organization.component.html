@@ -9,6 +9,7 @@
             <th># Sr.no</th>
             <th>Organization Name</th>
             <th>Campaigns</th>
+            <th>Posts</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -17,7 +18,8 @@
           <tr *ngFor="let organization of organizations.docs; let i = index">
             <td>{{ ((organizations.page-1)*organizations.limit)+(i+1) }}</td>
             <td>{{ organization.org_name }}</td>
-            <td><a routerLink="/app/campaigns">{{ organization.campaigns }}</a> - Campaign</td>
+            <td><a [routerLink]="['/app/organization',organization.id,'campaigns']">{{ organization.campaigns }}</a> - Campaign</td>
+            <td><a [routerLink]="['/app/organization',organization.id,'posts']">{{ organization.posts }}</a> - Post</td>            
             <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">
