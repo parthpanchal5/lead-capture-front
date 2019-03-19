@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row mt-5">
     <div class="col-md-12">
-      <a routerLink="/app/add-post" mat-raised-button color="primary" class="btn float-right mb-4"><mat-icon>add</mat-icon> Add Post</a>
+      <a routerLink="/app/add-post" mat-raised-button color="primary" class="btn float-right mb-4"><mat-icon>add</mat-icon> Create Post</a>
       <a  mat-raised-button color="warn" class="btn float-right mr-4"><mat-icon>filter_list</mat-icon> Filters</a>
       <table class="table table-hover table-striped table-bordered">
         <thead>
@@ -11,7 +11,6 @@
             <th>Post Desc</th>
             <th>Post Type</th>
             <th>Post Content</th>
-            <th>Post Link</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -23,7 +22,6 @@
             <td>{{ post.post_desc }}</td>
             <td>{{ post.post_type }}</td>
             <td>{{ post.post_content }}</td>
-            <td>link</td>
             <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">
@@ -38,7 +36,7 @@
             </td>
           </tr>
           <tr *ngIf="posts.length<=0">
-            <th class="text-center" colspan="7"><h4>No Records</h4></th>
+            <th class="text-center" colspan="7"><h5>No Data Found</h5></th>
           </tr>
           <tr>
             <td colspan="8">

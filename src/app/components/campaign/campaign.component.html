@@ -26,15 +26,16 @@
               <a (click)="deleteCamp(campaign.id)" style="cursor: pointer;"><mat-icon  class="text-danger">delete_outline</mat-icon></a> 
             </td>
           </tr>
+          <tr *ngIf="campaigns.length<=0">
+            <th class="text-center" colspan="6"><h5>No Data Found</h5></th>
+          </tr>
           <tr>
             <td colspan="6">
               <mat-paginator [hidePageSize]='0'  [length]="campaigns.total"
               [pageSize]="campaigns.limit" [pageIndex]="campaigns.page-1" (page)="pageEvent = PageHandler($event)"></mat-paginator>
             </td>
           </tr>
-          <tr *ngIf="campaigns.length<=0">
-            <th class="text-center" colspan="6"><h4>No Records</h4></th>
-          </tr>
+         
         </tbody>
       </table>
     </div>

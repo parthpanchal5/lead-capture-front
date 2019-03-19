@@ -34,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginService } from './services/login.service';
 import { TokenService } from './token';
 import { CommanService } from './services/comman.service';
+import { OrgDialogComponent } from './components/organization/org-dialog/org-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CommanService } from './services/comman.service';
     PassResetComponent,
     OrganizationDetailComponent,
     CampaignDetailComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    OrgDialogComponent
   ],
   imports: [
     BrowserModule,

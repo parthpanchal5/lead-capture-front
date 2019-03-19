@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row mt-5">
     <div class="col-md-12">
-      <a routerLink="/app/add-organization" mat-raised-button color="primary" class="float-right mb-4"><mat-icon>add</mat-icon> Add Organization</a>
-      <a  mat-raised-button color="warn" class="float-right mr-4"><mat-icon>filter_list</mat-icon> Filters</a>
+      <a routerLink="/app/add-organization" mat-raised-button color="primary" class="float-right mb-4"><mat-icon>add</mat-icon> Create Organization</a>
+      <a  mat-raised-button color="warn" class="float-right mr-4" (click)="openRepDialog()"><mat-icon>filter_list</mat-icon> Filters</a>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th># Sr.no</th>
+            <th style="max-width: 50px; text-align: center;"># Sr.no</th>
             <th>Organization Name</th>
             <th>Campaigns</th>
             <th>Posts</th>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let organization of organizations.docs; let i = index">
-            <td>{{ ((organizations.page-1)*organizations.limit)+(i+1) }}</td>
+            <td style="max-width: 14px; text-align: center;">{{ ((organizations.page-1)*organizations.limit)+(i+1) }}</td>
             <td>{{ organization.org_name }}</td>
             <td><a [routerLink]="['/app/organization',organization.id,'campaigns']">{{ organization.campaigns }}</a> - Campaign</td>
             <td><a [routerLink]="['/app/organization',organization.id,'posts']">{{ organization.posts }}</a> - Post</td>            
@@ -34,7 +34,7 @@
             </td>
           </tr>
           <tr *ngIf="organizations.length<=0">
-            <th class="text-center" colspan="5"><h4>No Records</h4></th>
+            <th class="text-center" colspan="6"><h5>No Data Found</h5></th>
           </tr>
           <tr>
             <td colspan="6">

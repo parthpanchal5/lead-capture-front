@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 // tslint:disable-next-line:max-line-length
 // import { MatButtonModule, MatProgressSpinnerModule, MatSelectModule, MatCheckboxModule, MatTableModule, MatDatepickerModule, Material.MatRippleModule, Material.MatToolbarModule, MatIconModule, MatMenuModule, MatFormFieldModule, MatCardModule, matFormFieldAnimations } from '@angular/material';
 import * as Material from '@angular/material';
+import { OrgDialogComponent } from './components/organization/org-dialog/org-dialog.component';
 
 @NgModule({
   imports: [
@@ -42,5 +43,6 @@ import * as Material from '@angular/material';
     Material.MatPaginatorModule,
     Material.MatDialogModule
   ],
+  entryComponents: [OrgDialogComponent]
 })
 export class MaterialModule { }
