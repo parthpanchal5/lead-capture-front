@@ -11,6 +11,7 @@
             <th>Post Desc</th>
             <th>Post Type</th>
             <th>Post Content</th>
+            <th>Post Link</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -22,6 +23,7 @@
             <td>{{ post.post_desc }}</td>
             <td>{{ post.post_type }}</td>
             <td>{{ post.post_content }}</td>
+            <td><a (click)="openRepDialog(post.id)">Link</a></td>
             <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">

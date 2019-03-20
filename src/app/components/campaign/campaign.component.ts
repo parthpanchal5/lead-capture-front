@@ -2,7 +2,8 @@ import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
 import { CampaignService } from 'src/app/services/campaign.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { MatDialog } from '@angular/material';
+import { CampDialogComponent } from './camp-dialog/camp-dialog.component';
 @Component({
   selector: 'app-campaign',
   templateUrl: './campaign.component.html',
@@ -19,7 +20,8 @@ export class CampaignComponent implements OnInit {
     private campaignService: CampaignService,
     private mainComponent: MainComponent,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
     ) { }
 
   ngOnInit() {
@@ -29,6 +31,15 @@ export class CampaignComponent implements OnInit {
       this.search.orgId = orgId;
     }
     this.getCampaigns(1, this.search);
+  }
+
+   // Open Dialog
+   openRepDialog(campId) {
+    const dialogRef = this.dialog.open(CampDialogComponent, {
+      width: '420px',
+      data: {id : campId}
+    });
+    dialogRef.afterClosed();
   }
 
   // Get all Campaigns

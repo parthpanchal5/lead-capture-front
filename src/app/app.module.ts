@@ -35,6 +35,9 @@ import { LoginService } from './services/login.service';
 import { TokenService } from './token';
 import { CommanService } from './services/comman.service';
 import { OrgDialogComponent } from './components/organization/org-dialog/org-dialog.component';
+import { CampFilterComponent } from './components/campaign/camp-filter/camp-filter.component';
+import { CampDialogComponent } from './components/campaign/camp-dialog/camp-dialog.component';
+import { PostDialogComponent } from './components/post/post-dialog/post-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { OrgDialogComponent } from './components/organization/org-dialog/org-dia
     OrganizationDetailComponent,
     CampaignDetailComponent,
     PostDetailComponent,
-    OrgDialogComponent
+    OrgDialogComponent,
+    CampFilterComponent,
+    CampDialogComponent,
+    PostDialogComponent
   ],
   imports: [
     BrowserModule,

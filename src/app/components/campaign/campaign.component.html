@@ -19,7 +19,7 @@
             <td style="max-width: 14px; text-align: center;">{{ ((campaigns.page-1)*campaigns.limit)+(i+1) }}</td>
             <td>{{ campaign.title }}</td>
             <td>{{ campaign.camp_desc }}</td>
-            <td>{{ campaign.landing_page_url }}</td>
+            <td><a class="link" (click)="openRepDialog(campaign.id)">Link</a></td>
             <td>{{ campaign.remark }}</td>
             <td class="button-row">
               <a [routerLink]="['/app/campaign-detail',campaign.id]"><mat-icon class="text-primary">launch</mat-icon></a> 

@@ -36,7 +36,14 @@ export class PostService {
         }
       }>(API_URL + '/post/' + id + '?auth=' + this.token.getToken());
   }
-
+  public getPostLink(id) {
+    return this.http
+      .get<{
+        status: boolean,
+        message: string,
+        data: string
+      }>(API_URL + '/post-link/' + id + '?auth=' + this.token.getToken());
+  }
   // Insert post
   public insPost(formdata) {
     return this.http

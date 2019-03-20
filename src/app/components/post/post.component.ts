@@ -2,7 +2,8 @@ import { PostService } from './../../services/post.service';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { MatDialog } from '@angular/material';
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
 
 @Component({
   selector: 'app-post',
@@ -20,8 +21,18 @@ export class PostComponent implements OnInit {
     private postService: PostService,
     private mainComponent: MainComponent,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
     ) { }
+
+  // Dialog
+  openRepDialog(postId) {
+    const dialogRef = this.dialog.open(PostDialogComponent, {
+      width: '420px',
+      data: {id : postId}
+    });
+    dialogRef.afterClosed();
+  }
 
   ngOnInit() {
     const orgId = this.route.snapshot.paramMap.get('id');
@@ -31,6 +42,9 @@ export class PostComponent implements OnInit {
     }
     this.getPosts(1, this.search);
   }
+
+  // Dialog
+
 
    // Get all Orgaizations
    public getPosts(page, search) {

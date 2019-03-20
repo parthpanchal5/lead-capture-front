@@ -1,3 +1,4 @@
+import { CampDialogComponent } from './components/campaign/camp-dialog/camp-dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -5,7 +6,7 @@ import { CommonModule } from '@angular/common';
 // import { MatButtonModule, MatProgressSpinnerModule, MatSelectModule, MatCheckboxModule, MatTableModule, MatDatepickerModule, Material.MatRippleModule, Material.MatToolbarModule, MatIconModule, MatMenuModule, MatFormFieldModule, MatCardModule, matFormFieldAnimations } from '@angular/material';
 import * as Material from '@angular/material';
 import { OrgDialogComponent } from './components/organization/org-dialog/org-dialog.component';
-
+import { PostDialogComponent } from './components/post/post-dialog/post-dialog.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -43,6 +44,10 @@ import { OrgDialogComponent } from './components/organization/org-dialog/org-dia
     Material.MatPaginatorModule,
     Material.MatDialogModule
   ],
-  entryComponents: [OrgDialogComponent]
+  entryComponents: [
+    OrgDialogComponent,
+    CampDialogComponent,
+    PostDialogComponent
+  ]
 })
 export class MaterialModule { }

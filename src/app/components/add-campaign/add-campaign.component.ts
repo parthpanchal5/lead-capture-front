@@ -2,6 +2,7 @@ import { CampaignService } from 'src/app/services/campaign.service';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { URL } from 'url';
 
 @Component({
   selector: 'app-add-campaign',
@@ -12,7 +13,7 @@ export class AddCampaignComponent implements OnInit {
 
   formBtn = 'Create Campaign';
   formTitle = 'Add Campaign';
-
+  URLregexp = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
   campaignData = {
     title: '',
     camp_desc: '',
@@ -47,9 +48,13 @@ export class AddCampaignComponent implements OnInit {
     if (this.campaignData.landing_page_url === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please enter URL', title: 'Required:'});
       return;
-    } else {
+    } else if (this.URLregexp.test(this.campaignData.landing_page_url)) {
       formdata.append('landing_page_url', this.campaignData.landing_page_url);
+    } else {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please enter valid URL', title: 'Required:'});
+      return;
     }
+
     if (this.campaignData.remark === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please enter remark', title: 'Required:'});
       return;
