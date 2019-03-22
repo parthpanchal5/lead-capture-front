@@ -24,7 +24,8 @@ import { PostDialogComponent } from './components/post/post-dialog/post-dialog.c
     Material.MatGridListModule,
     Material.MatSelectModule,
     Material.MatPaginatorModule,
-    Material.MatDialogModule
+    Material.MatDialogModule,
+    Material.MatTooltipModule
   ],
 
   exports: [
@@ -42,7 +43,8 @@ import { PostDialogComponent } from './components/post/post-dialog/post-dialog.c
     Material.MatProgressSpinnerModule,
     Material.MatSelectModule,
     Material.MatPaginatorModule,
-    Material.MatDialogModule
+    Material.MatDialogModule,
+    Material.MatTooltipModule
   ],
   entryComponents: [
     OrgDialogComponent,

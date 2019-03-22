@@ -9,14 +9,18 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OrganizationComponent } from './components/organization/organization.component';
 import { AddOrganizationComponent } from './components/add-organization/add-organization.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
-import { OrgFilterComponent } from './components/org-filter/org-filter.component';
 import { OrganizationDetailComponent } from './components/add-organization/organization-detail.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddCampaignComponent } from './components/add-campaign/add-campaign.component';
 import { PassResetComponent } from './components/pass-reset/pass-reset.component';
 import { PostComponent } from './components/post/post.component';
 import { CampaignDetailComponent } from './components/add-campaign/campaign-detail.component';
+import { OrgFilterComponent } from './components/organization/org-filter/org-filter.component';
 import { PostDetailComponent } from './components/add-post/post-detail.component';
+import { OrgDialogComponent } from './components/organization/org-dialog/org-dialog.component';
+import { CampFilterComponent } from './components/campaign/camp-filter/camp-filter.component';
+import { CampDialogComponent } from './components/campaign/camp-dialog/camp-dialog.component';
+import { PostDialogComponent } from './components/post/post-dialog/post-dialog.component';
 
 // Module
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,10 +38,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginService } from './services/login.service';
 import { TokenService } from './token';
 import { CommanService } from './services/comman.service';
-import { OrgDialogComponent } from './components/organization/org-dialog/org-dialog.component';
-import { CampFilterComponent } from './components/campaign/camp-filter/camp-filter.component';
-import { CampDialogComponent } from './components/campaign/camp-dialog/camp-dialog.component';
-import { PostDialogComponent } from './components/post/post-dialog/post-dialog.component';
 
 @NgModule({
   declarations: [

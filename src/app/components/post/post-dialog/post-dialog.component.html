@@ -3,10 +3,10 @@
   <form>
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Tracking Link</mat-label>
-      <input matInput autocomplete="off" [(ngModel)]="link" name="link" type="text">
+      <input matInput autocomplete="off" id="trackLink" [(ngModel)]="link" name="link" type="text" #userinput>
+      <mat-icon matSuffix (click)="copyInputMessage(userinput)" id="click-icon" color="" matTooltip="{{copy}}" matTooltipPosition="above" [matTooltipShowDelay]="1500">content_copy</mat-icon>
     </mat-form-field>
-    <button type="submit" mat-raised-button	color="primary">Copy</button>
-    <button type="button" (click)="onNoClick()" class="ml-3 btn" mat-raised-button	color="secondary">Cancel</button>
+    <button type="button" (click)="onNoClick()" class="ml-3 btn" mat-raised-button	color="secondary">Cancel</button><br><br>
   </form>
 </div>
   

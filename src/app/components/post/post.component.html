@@ -23,7 +23,7 @@
             <td>{{ post.post_desc }}</td>
             <td>{{ post.post_type }}</td>
             <td>{{ post.post_content }}</td>
-            <td><a (click)="openRepDialog(post.id)">Link</a></td>
+            <td class="text-center"><a (click)="openRepDialog(post.id)">Link <mat-icon class="mt-2">link</mat-icon></a></td>
             <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">

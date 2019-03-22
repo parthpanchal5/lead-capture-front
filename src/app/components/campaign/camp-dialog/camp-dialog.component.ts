@@ -15,5 +15,7 @@ export class CampDialogComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

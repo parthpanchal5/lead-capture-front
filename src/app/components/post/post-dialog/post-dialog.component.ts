@@ -12,6 +12,7 @@ import { Inject } from '@angular/core';
 export class PostDialogComponent implements OnInit {
 
   link = '';
+  copy = 'Copy Link';
   constructor(
     private postService: PostService,
     // private mainComponent: MainComponent,
@@ -19,6 +20,13 @@ export class PostDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: {id: string},
 
   ) { }
+
+  copyInputMessage(inputElement){
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
+    this.copy = 'Link Copied';
+  }
 
   ngOnInit() {
     this.postService.getPostLink(this.data.id).subscribe((data) => {
