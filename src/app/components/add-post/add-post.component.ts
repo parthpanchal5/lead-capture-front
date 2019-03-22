@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MainComponent } from './../main/main.component';
 import { PostService } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +10,7 @@ import { CommanService } from 'src/app/services/comman.service';
 })
 export class AddPostComponent implements OnInit {
 
-  formBtn = 'Add Post';
+  formBtn = 'Add';
   formTitle = 'Add Post';
 
   postData = {
@@ -25,15 +25,18 @@ export class AddPostComponent implements OnInit {
     private mainComponent: MainComponent,
     private postService: PostService,
     private router: Router,
-    private commanService: CommanService
+    private commanService: CommanService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
   }
-
+  // Generate Randomstring for tracking
   gen() {
     this.postData.track_id = this.commanService.randomString(6);
   }
+
+  // Adding Post
   addPost() {
     const formdata = new FormData();
 
@@ -82,10 +85,10 @@ export class AddPostComponent implements OnInit {
       } else {
         this.mainComponent.alertMessage({type: 'alert', message: data.message, title: 'Error'});
       }
-      this.formBtn = 'Add Campaign';
+      this.formBtn = 'Add';
     }, error => {
       console.log('Error: ', error);
-      this.formBtn = 'Add Post';
+      this.formBtn = 'Add';
     });
   }
 

@@ -2,17 +2,19 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 mt-5 pt-5">
-      <mat-card class="shadow-lg">
+      <mat-card class="shadow-lg animated fadeIn">
         <mat-card-title class="text-center">Admin Login</mat-card-title><hr>
         <mat-card-content class="mt-2 pt-2">
-            <swal [options]="{ showConfirmButton: false,
-              position: 'top-end',
-              toast: true,
-              timer: 3500 }"
-              #loginAlertMsg
-              title="{{message.title}}"
-              text="{{message.message}}"
-              type="{{message.type}}" >
+            <swal 
+              [options]="{ 
+                showConfirmButton: false,
+                position: 'top-end',
+                toast: true,
+                timer: 3500 }"
+                #loginAlertMsg
+                title="{{message.title}}"
+                text="{{message.message}}"
+                type="{{message.type}}" >
             </swal>
          <form>
           
@@ -23,8 +25,8 @@
             
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Enter password</mat-label>
-              <input matInput  type="password" [(ngModel)]="loginData.password" name="password">
-              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+              <input matInput  type="password" [(ngModel)]="loginData.password" [type]="hide ? 'password' : 'text'" name="password">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             
             </mat-form-field>
             <button type="submit" class="mt-2 mb-4" [disabled]="loginBtn!='Login'" (click)="login()" mat-raised-button	color="primary">{{loginBtn}}</button><br>

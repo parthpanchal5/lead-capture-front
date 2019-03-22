@@ -4,7 +4,7 @@
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Tracking Link</mat-label>
   <input matInput autocomplete="off" id="trackLink" style="font-size: 14px; font-family: 'Nunito', sans-serif;" [(ngModel)]="link" name="link" type="text" #userinput>
-      <mat-icon matSuffix (click)="copyInputMessage(userinput)" id="click-icon" color="" matTooltip="{{copy}}" matTooltipPosition="above" [matTooltipShowDelay]="1200">content_copy</mat-icon>
+      <mat-icon matSuffix (click)="copyInputMessage(userinput)" id="click-icon" color="" matTooltip="{{copy}}" matTooltipPosition="above">content_copy</mat-icon>
     </mat-form-field>
     <button type="button" (click)="onNoClick()" class="ml-2 btn" mat-raised-button	color="secondary">Cancel</button><br><br>
   </form>

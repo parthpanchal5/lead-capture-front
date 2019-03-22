@@ -1,4 +1,3 @@
-import { OrganizationsService } from 'src/app/services/organizations.service';
 import { CampaignService } from 'src/app/services/campaign.service';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
@@ -10,8 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddCampaignComponent implements OnInit {
 
-  formBtn = 'Update Campaign';
-
+  formBtn = 'Update';
   formTitle = 'Campaign Detail';
 
   id = '';

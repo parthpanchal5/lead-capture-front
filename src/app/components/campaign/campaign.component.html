@@ -21,7 +21,7 @@
             <td>{{ campaign.title }}</td>
             <td>{{ campaign.camp_desc }}</td>
             <td><a class="link" (click)="openRepDialog(campaign.id)">Link</a></td>
-            <td> <a [routerLink]="['/app/campaigns', campaign.id, 'posts']"> {{campaign.posts}}- Posts</a></td>
+            <td> <a [routerLink]="['/app/campaigns', campaign.id, 'posts']"> {{campaign.posts}} - Posts</a></td>
             <td>{{ campaign.remark }}</td>
             <td class="button-row">
               <a [routerLink]="['/app/campaign-detail',campaign.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
@@ -33,8 +33,13 @@
           </tr>
           <tr>
             <td colspan="7">
-              <mat-paginator [hidePageSize]='0'  [length]="campaigns.total"
-              [pageSize]="campaigns.limit" [pageIndex]="campaigns.page-1" (page)="pageEvent = PageHandler($event)"></mat-paginator>
+              <mat-paginator 
+                [hidePageSize]='0'  
+                [length]="campaigns.total"
+                [pageSize]="campaigns.limit" 
+                [pageIndex]="campaigns.page-1" 
+                (page)="pageEvent = PageHandler($event)">
+            </mat-paginator>
             </td>
           </tr>
         </tbody>

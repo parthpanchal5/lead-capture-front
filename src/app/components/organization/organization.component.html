@@ -9,9 +9,8 @@
             <th style="max-width: 50px; text-align: center;"># Sr.no</th>
             <th>Organization Name</th>
             <th>Campaigns</th>
-            <th>Posts</th>
             <th>Status</th>
-            <th>Action</th>
+            <th class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -19,7 +18,6 @@
             <td style="max-width: 14px; text-align: center;">{{ ((organizations.page-1)*organizations.limit)+(i+1) }}</td>
             <td>{{ organization.org_name }}</td>
             <td><a [routerLink]="['/app/organization',organization.id,'campaigns']">{{ organization.campaigns }} - Campaign</a></td>
-            <td><a [routerLink]="['/app/organization',organization.id,'posts']">{{ organization.posts }} - Post</a></td>            
             <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">
@@ -28,16 +26,16 @@
                 </mat-select>
               </mat-form-field>
             </td>
-            <td class="button-row">
+            <td class="button-row text-center">
               <a [routerLink]="['/app/organization-detail',organization.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
               <a (click)="deleteOrg(organization.id)" style="cursor: pointer;"><mat-icon  class="text-danger">delete_outline</mat-icon></a>     
             </td>
           </tr>
           <tr *ngIf="organizations.docs.length<=0">
-            <th class="text-center" colspan="6"><h5>No Data Found</h5></th>
+            <th class="text-center" colspan="5"><h5>No Data Found</h5></th>
           </tr>
           <tr>
-            <td colspan="6">
+            <td colspan="5">
               <mat-paginator [hidePageSize]='0'  [length]="organizations.total"
               [pageSize]="organizations.limit" [pageIndex]="organizations.page-1" (page)="pageEvent = PageHandler($event)"></mat-paginator>
             </td>
