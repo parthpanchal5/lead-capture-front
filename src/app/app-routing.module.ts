@@ -13,7 +13,6 @@ import { OrganizationComponent } from './components/organization/organization.co
 import { AddOrganizationComponent } from './components/add-organization/add-organization.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { AddCampaignComponent } from './components/add-campaign/add-campaign.component';
-import { CampaignDetailComponent } from './components/add-campaign/campaign-detail.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -29,7 +28,9 @@ const routes: Route[] = [
       { path: 'organization-detail/:id', component: OrganizationDetailComponent },
       { path: 'campaigns', component: CampaignComponent },
       { path: 'organization/:id/campaigns', component: CampaignComponent },
-      { path: 'campaign-detail/:id', component: CampaignDetailComponent },
+      { path: 'campaigns/:id/posts', component: PostComponent },
+
+      { path: 'campaign-detail/:id', component: AddCampaignComponent },
       { path: 'post-detail/:id', component: PostDetailComponent },
       { path: 'posts', component: PostComponent },
       { path: 'organization/:id/posts', component: PostComponent },

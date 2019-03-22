@@ -6,7 +6,7 @@
       <table class="table table-hover table-striped table-bordered">
         <thead>
           <tr>
-            <th style="max-width: 50px; text-align: center;"># Sr.no</th>
+            <th style="max-width: 55px; text-align: center;"># Sr.no</th>
             <th>Post Name</th>
             <th>Post Desc</th>
             <th>Post Type</th>
@@ -23,7 +23,7 @@
             <td>{{ post.post_desc }}</td>
             <td>{{ post.post_type }}</td>
             <td>{{ post.post_content }}</td>
-            <td class="text-center"><a (click)="openRepDialog(post.id)">Link <mat-icon class="mt-2">link</mat-icon></a></td>
+            <td class="text-center"><a style="text-decoration: none;" mat-raised-button color="" (click)="openRepDialog(post.id)">Link <mat-icon>link</mat-icon></a></td>
             <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">
@@ -37,8 +37,8 @@
               <a (click)="deletePost(post.id)" style="cursor: pointer;"><mat-icon class="text-danger">delete_outline</mat-icon></a> 
             </td>
           </tr>
-          <tr *ngIf="posts.length<=0">
-            <th class="text-center" colspan="7"><h5>No Data Found</h5></th>
+          <tr *ngIf="posts.docs.length<=0">
+            <th class="text-center" colspan="8"><h5>No Data Found</h5></th>
           </tr>
           <tr>
             <td colspan="8">

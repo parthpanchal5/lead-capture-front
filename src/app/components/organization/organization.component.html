@@ -18,8 +18,8 @@
           <tr *ngFor="let organization of organizations.docs; let i = index">
             <td style="max-width: 14px; text-align: center;">{{ ((organizations.page-1)*organizations.limit)+(i+1) }}</td>
             <td>{{ organization.org_name }}</td>
-            <td><a [routerLink]="['/app/organization',organization.id,'campaigns']">{{ organization.campaigns }}</a> - Campaign</td>
-            <td><a [routerLink]="['/app/organization',organization.id,'posts']">{{ organization.posts }}</a> - Post</td>            
+            <td><a [routerLink]="['/app/organization',organization.id,'campaigns']">{{ organization.campaigns }} - Campaign</a></td>
+            <td><a [routerLink]="['/app/organization',organization.id,'posts']">{{ organization.posts }} - Post</a></td>            
             <td id="option">
               <mat-form-field>
                 <mat-select placeholder="Status">
@@ -33,7 +33,7 @@
               <a (click)="deleteOrg(organization.id)" style="cursor: pointer;"><mat-icon  class="text-danger">delete_outline</mat-icon></a>     
             </td>
           </tr>
-          <tr *ngIf="organizations.length<=0">
+          <tr *ngIf="organizations.docs.length<=0">
             <th class="text-center" colspan="6"><h5>No Data Found</h5></th>
           </tr>
           <tr>

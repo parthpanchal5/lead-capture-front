@@ -1,9 +1,8 @@
+import { OrganizationsService } from 'src/app/services/organizations.service';
 import { CampaignService } from 'src/app/services/campaign.service';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { URL } from 'url';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-add-campaign',
   templateUrl: './add-campaign.component.html',
@@ -11,28 +10,68 @@ import { URL } from 'url';
 })
 export class AddCampaignComponent implements OnInit {
 
-  formBtn = 'Create Campaign';
-  formTitle = 'Add Campaign';
-  URLregexp = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+  formBtn = 'Update Campaign';
+
+  formTitle = 'Campaign Detail';
+
+  id = '';
+
   campaignData = {
+    org_id: '',
     title: '',
     camp_desc: '',
     landing_page_url: '',
     remark: ''
   };
 
+  organizations = [];
+
   constructor(
     private mainComponent: MainComponent,
     private campaignService: CampaignService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+      this.formBtn = 'Update';
+      this.formTitle = 'Campaign Detail';
+      this.getCampaignDtl(this.id);
+    } else {
+      this.formBtn = 'Add';
+      this.formTitle = 'Add Campaign';
+      this.getCampaignDtl(0);
+    }
+  }
+
+  getCampaignDtl(id) {
+    this.campaignService.getCampaignDtl(id).subscribe((data) => {
+      console.log('data: ', data);
+      if (data.status) {
+        this.campaignData = data.data.campaign;
+        this.organizations = data.data.organizations;
+        // tslint:disable-next-line:max-line-length
+        this.campaignData.org_id = (this.campaignData.org_id) ? this.campaignData.org_id.toString() : ((this.organizations && this.organizations.length > 0) ? this.organizations[0].id.toString() : '' );
+      } else {
+        this.campaignData = {
+          org_id: '',
+          title: '',
+          camp_desc: '',
+          landing_page_url: '',
+          remark: ''
+        };
+        this.organizations = [];
+        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Error'});
+      }
+    }, error => {
+      console.log('Error: ', error);
+    });
   }
 
   addCamp() {
     const formdata = new FormData();
-
     if (this.campaignData.title === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please enter campaign title', title: 'Required:'});
       return;
@@ -48,32 +87,36 @@ export class AddCampaignComponent implements OnInit {
     if (this.campaignData.landing_page_url === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please enter URL', title: 'Required:'});
       return;
-    } else if (this.URLregexp.test(this.campaignData.landing_page_url)) {
-      formdata.append('landing_page_url', this.campaignData.landing_page_url);
     } else {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter valid URL', title: 'Required:'});
-      return;
+      formdata.append('landing_page_url', this.campaignData.landing_page_url);
     }
-
     if (this.campaignData.remark === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please enter remark', title: 'Required:'});
       return;
     } else {
       formdata.append('remark', this.campaignData.remark);
     }
+    if (this.id) {
+      formdata.append('id', this.id);
+    }
     this.formBtn = 'Loading...';
+
     this.campaignService.postCampaign(formdata).subscribe((data) => {
-      console.log('Data: ', data);
+      console.log('data: ', data);
       if (data.status) {
         this.mainComponent.alertMessage({type: 'success', message: data.message, title: 'Success'});
         this.router.navigate(['/app/campaigns']);
       } else {
-        this.mainComponent.alertMessage({type: 'alert', message:  data.message, title: 'Error'});
+        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Success'});
       }
-      this.formBtn = 'Create Campaign';
+      if (this.id) {
+        this.formBtn = 'Update';
+      } else {
+        this.formBtn = 'Add';
+      }
     }, error => {
       console.log('Error: ', error);
-      this.formBtn = 'Create Campaign';
+      this.formBtn = 'Update';
     });
   }
 }

@@ -14,7 +14,6 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddCampaignComponent } from './components/add-campaign/add-campaign.component';
 import { PassResetComponent } from './components/pass-reset/pass-reset.component';
 import { PostComponent } from './components/post/post.component';
-import { CampaignDetailComponent } from './components/add-campaign/campaign-detail.component';
 import { OrgFilterComponent } from './components/organization/org-filter/org-filter.component';
 import { PostDetailComponent } from './components/add-post/post-detail.component';
 import { OrgDialogComponent } from './components/organization/org-dialog/org-dialog.component';
@@ -56,7 +55,6 @@ import { CommanService } from './services/comman.service';
     AddCampaignComponent,
     PassResetComponent,
     OrganizationDetailComponent,
-    CampaignDetailComponent,
     PostDetailComponent,
     OrgDialogComponent,
     CampFilterComponent,

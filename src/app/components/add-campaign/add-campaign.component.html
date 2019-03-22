@@ -1,13 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3"></div>
-    <div class="col-md-6 mt-4 pt-5">
+    <div class="col-md-6 mt-4 pt-5 mb-5">
       <form>
         <mat-card class="shadow-lg">
           <mat-card-title class="text-center">{{formTitle}}</mat-card-title><hr>
           <mat-card-content class="mt-2 pt-2">
             <div class="example-container">
-              
+              <mat-form-field>
+                <mat-select placeholder="Select Organization" name="org_id" [(ngModel)]="campaignData.org_id">
+                  <mat-option *ngFor="let organization of organizations" value="{{organization.id}}">{{organization.org_name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
               <mat-form-field class="example-full-width" appearance="standard">
                 <mat-label>Enter Campaign Title <span class="text-danger">*</span></mat-label>
                 <input matInput autocomplete="off" [(ngModel)]="campaignData.title" name="title" type="text">

@@ -6,36 +6,37 @@
       <table class="table table-hover table-striped table-bordered">
         <thead>
           <tr>
-            <th style="max-width: 50px; text-align: center;"># Sr.no</th>
+            <th style="max-width: 60px;"># Sr.no</th>
             <th>Campaign Name</th>
             <th>Campaign Desc</th>
             <th>Landing Page URL</th>
+            <th>Campaign Posts</th>
             <th>Remark</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let campaign of campaigns.docs; let i = index">
-            <td style="max-width: 14px; text-align: center;">{{ ((campaigns.page-1)*campaigns.limit)+(i+1) }}</td>
+            <td style="max-width: 18px; text-align: center;">{{ ((campaigns.page-1)*campaigns.limit)+(i+1) }}</td>
             <td>{{ campaign.title }}</td>
             <td>{{ campaign.camp_desc }}</td>
             <td><a class="link" (click)="openRepDialog(campaign.id)">Link</a></td>
+            <td> <a [routerLink]="['/app/campaigns', campaign.id, 'posts']"> {{campaign.posts}}- Posts</a></td>
             <td>{{ campaign.remark }}</td>
             <td class="button-row">
               <a [routerLink]="['/app/campaign-detail',campaign.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
               <a (click)="deleteCamp(campaign.id)" style="cursor: pointer;"><mat-icon  class="text-danger">delete_outline</mat-icon></a> 
             </td>
           </tr>
-          <tr *ngIf="campaigns.length<=0">
-            <th class="text-center" colspan="6"><h5>No Data Found</h5></th>
+          <tr *ngIf="campaigns.docs.length<=0">
+            <th class="text-center" colspan="7"><h5>No Data Found</h5></th>
           </tr>
           <tr>
-            <td colspan="6">
+            <td colspan="7">
               <mat-paginator [hidePageSize]='0'  [length]="campaigns.total"
               [pageSize]="campaigns.limit" [pageIndex]="campaigns.page-1" (page)="pageEvent = PageHandler($event)"></mat-paginator>
             </td>
           </tr>
-         
         </tbody>
       </table>
     </div>

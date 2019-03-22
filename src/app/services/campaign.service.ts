@@ -27,10 +27,14 @@ export class CampaignService {
         status: boolean,
         message: string,
         data: {
-          title: string,
-          camp_desc: string,
-          landing_page_url: string,
-          remark: string
+          campaign: {
+            org_id: string,
+            title: string,
+            camp_desc: string,
+            landing_page_url: string,
+            remark: string
+            },
+          organizations: []
         }}>(API_URL + '/campaign/' + id + '?auth=' + this.token.getToken());
   }
 
