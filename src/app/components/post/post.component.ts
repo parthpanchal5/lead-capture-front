@@ -78,6 +78,7 @@ export class PostComponent implements OnInit {
       console.log('data: ', data);
       if (data.status) {
         this.mainComponent.alertMessage({title: 'Deleted', message: data.message, type: 'success'});
+        this.router.navigate(['/app/posts']);
         this.posts = this.posts.filter((item) => {
           return item.id !== id;
         });

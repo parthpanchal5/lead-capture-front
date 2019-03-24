@@ -1,4 +1,3 @@
-import { PostDetailComponent } from './components/add-post/post-detail.component';
 import { OrganizationDetailComponent } from './components/add-organization/organization-detail.component';
 import { PassResetComponent } from './components/pass-reset/pass-reset.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
@@ -29,9 +28,8 @@ const routes: Route[] = [
       { path: 'campaigns', component: CampaignComponent },
       { path: 'organization/:id/campaigns', component: CampaignComponent },
       { path: 'campaigns/:id/posts', component: PostComponent },
-
       { path: 'campaign-detail/:id', component: AddCampaignComponent },
-      { path: 'post-detail/:id', component: PostDetailComponent },
+      { path: 'post-detail/:id', component: AddPostComponent },
       { path: 'posts', component: PostComponent },
       { path: 'organization/:id/posts', component: PostComponent },
       { path: 'add-post', component: AddPostComponent },

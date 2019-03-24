@@ -13,7 +13,11 @@ export class AddPostComponent implements OnInit {
   formBtn = 'Add';
   formTitle = 'Add Post';
 
+  id = '';
+
   postData = {
+    org_id: '',
+    campaign_id: '',
     title: '',
     post_desc: '',
     post_type: '',
@@ -21,6 +25,10 @@ export class AddPostComponent implements OnInit {
     post_content: '',
     remark: ''
   };
+
+  organizations = [];
+  campaigns = [];
+
   constructor(
     private mainComponent: MainComponent,
     private postService: PostService,
@@ -30,6 +38,47 @@ export class AddPostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+      this.formBtn = 'Update';
+      this.formTitle = 'Post Detail';
+      this.getPostDtl(this.id);
+    } else {
+      this.formBtn = 'Add';
+      this.formTitle = 'Add Post';
+      this.getPostDtl(0);
+    }
+  }
+
+  getPostDtl(id) {
+    this.postService.getPostDtl(id).subscribe((data) => {
+      console.log('data: ', data);
+      if (data.status) {
+        this.postData = data.data.post;
+        this.organizations = data.data.organizations;
+        this.campaigns = data.data.campaigns;
+        // tslint:disable-next-line:max-line-length
+        this.postData.org_id = (this.postData.org_id) ? this.postData.org_id.toString() : ((this.organizations && this.organizations.length > 0) ? this.organizations[0].id.toString() : '');
+        // tslint:disable-next-line:max-line-length
+        this.postData.campaign_id = (this.postData.campaign_id) ? this.postData.campaign_id.toString() : ((this.campaigns && this.campaigns.length > 0) ? this.campaigns[0].id.toString() : '');
+      } else {
+        this.postData = {
+          org_id: '',
+          campaign_id: '',
+          title: '',
+          post_desc: '',
+          post_type: '',
+          track_id: '',
+          post_content: '',
+          remark: ''
+        };
+        this.organizations = [];
+        this.campaigns = [];
+        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Error'});
+      }
+    }, error => {
+      console.log('Error: ', error);
+    });
   }
   // Generate Randomstring for tracking
   gen() {
@@ -76,12 +125,19 @@ export class AddPostComponent implements OnInit {
     } else {
       formdata.append('remark', this.postData.remark);
     }
+    if (this.id) {
+      formdata.append('id', this.id);
+    }
     this.formBtn = 'Loading...';
     this.postService.insPost(formdata).subscribe((data) => {
       console.log('Data: ', data);
       if (data.status) {
         this.mainComponent.alertMessage({type: 'success', message: data.message, title: 'Success'});
-        this.router.navigate(['/app/posts']);
+        // this.router.navigate(['/app/posts']);
+        this.router.navigate(['/app/campaigns/:id/posts', 'postData.id']);
+
+        if (this.id){
+        }
       } else {
         this.mainComponent.alertMessage({type: 'alert', message: data.message, title: 'Error'});
       }

@@ -27,15 +27,21 @@ export class PostService {
         status: boolean,
         message: string,
         data: {
+          post: {
+          org_id: string,
+          campaign_id: string,
           title: string,
           post_desc: string,
           post_type: string,
           track_id: string,
           post_content: string,
           remark: string
-        }
-      }>(API_URL + '/post/' + id + '?auth=' + this.token.getToken());
+        },
+        organizations: [],
+        campaigns: []
+      }}>(API_URL + '/post/' + id + '?auth=' + this.token.getToken());
   }
+
   public getPostLink(id) {
     return this.http
       .get<{
