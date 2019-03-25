@@ -1,3 +1,4 @@
+import { CampaignService } from './../../services/campaign.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MainComponent } from './../main/main.component';
 import { PostService } from './../../services/post.service';
@@ -32,6 +33,7 @@ export class AddPostComponent implements OnInit {
   constructor(
     private mainComponent: MainComponent,
     private postService: PostService,
+    private campaignService: CampaignService,
     private router: Router,
     private commanService: CommanService,
     private route: ActivatedRoute
@@ -59,8 +61,7 @@ export class AddPostComponent implements OnInit {
         this.campaigns = data.data.campaigns;
         // tslint:disable-next-line:max-line-length
         this.postData.org_id = (this.postData.org_id) ? this.postData.org_id.toString() : ((this.organizations && this.organizations.length > 0) ? this.organizations[0].id.toString() : '');
-        // tslint:disable-next-line:max-line-length
-        this.postData.campaign_id = (this.postData.campaign_id) ? this.postData.campaign_id.toString() : ((this.campaigns && this.campaigns.length > 0) ? this.campaigns[0].id.toString() : '');
+        this.getCampaignDD(this.postData.org_id);
       } else {
         this.postData = {
           org_id: '',
@@ -80,6 +81,19 @@ export class AddPostComponent implements OnInit {
       console.log('Error: ', error);
     });
   }
+  getCampaignDD(orgid){
+    this.campaignService.getCampaignDD(orgid).subscribe((data) => {
+      console.log('data campaign : ', data);
+      if (data.status) {
+        this.campaigns = data.data;
+      } else {
+        this.campaigns = [];
+        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Error'});
+      }
+    }, error => {
+      console.log('Error: ', error);
+    });
+  }
   // Generate Randomstring for tracking
   gen() {
     this.postData.track_id = this.commanService.randomString(6);
@@ -89,38 +103,51 @@ export class AddPostComponent implements OnInit {
   addPost() {
     const formdata = new FormData();
 
-    if (this.postData.title === '') {
+    console.log('post data : ', this.postData);
+    if (!this.postData.org_id || this.postData.org_id === '') {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Select Organization', title: 'Required'});
+      return;
+    } else {
+      formdata.append('org_id', this.postData.org_id);
+    }
+    if (!this.postData.campaign_id || this.postData.campaign_id === '') {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please select Post campaign', title: 'Required'});
+      return;
+    } else {
+      formdata.append('campaign_id', this.postData.campaign_id);
+    }
+    if (!this.postData.title || this.postData.title === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post Title', title: 'Required'});
       return;
     } else {
       formdata.append('title', this.postData.title);
     }
-    if (this.postData.post_desc === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post Description'});
+    if (!this.postData.post_desc || this.postData.post_desc === '') {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post Description', title: 'Required'});
       return;
     } else {
       formdata.append('post_desc', this.postData.post_desc);
     }
-    if (this.postData.post_type === '' ) {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post type'});
+    if (!this.postData.post_type || this.postData.post_type === '' ) {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post type', title: 'Required'});
       return;
     } else {
       formdata.append('post_type', this.postData.post_type);
     }
-    if (this.postData.track_id === '' ) {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post link'});
+    if (!this.postData.track_id || this.postData.track_id === '' ) {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post link', title: 'Required'});
       return;
     } else {
       formdata.append('track_id', this.postData.track_id);
     }
-    if (this.postData.post_content === '' ) {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post content'});
+    if (!this.postData.post_content || this.postData.post_content === '' ) {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post content', title: 'Required'});
       return;
     } else {
       formdata.append('post_content', this.postData.post_content);
     }
-    if (this.postData.remark === '' ) {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post remark'});
+    if (!this.postData.remark || this.postData.remark === '' ) {
+      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post remark', title: 'Required'});
       return;
     } else {
       formdata.append('remark', this.postData.remark);
@@ -133,13 +160,9 @@ export class AddPostComponent implements OnInit {
       console.log('Data: ', data);
       if (data.status) {
         this.mainComponent.alertMessage({type: 'success', message: data.message, title: 'Success'});
-        // this.router.navigate(['/app/posts']);
-        this.router.navigate(['/app/campaigns/:id/posts', 'postData.id']);
-
-        if (this.id){
-        }
+        this.router.navigate(['/app/posts']);
       } else {
-        this.mainComponent.alertMessage({type: 'alert', message: data.message, title: 'Error'});
+        this.mainComponent.alertMessage({type: 'error', message: data.message, title: 'Error'});
       }
       this.formBtn = 'Add';
     }, error => {
@@ -147,5 +170,4 @@ export class AddPostComponent implements OnInit {
       this.formBtn = 'Add';
     });
   }
-
 }

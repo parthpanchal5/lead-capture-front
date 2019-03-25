@@ -8,7 +8,7 @@
           <mat-card-content class="mt-2 pt-2">
             <div class="example-container">
               <mat-form-field>
-                <mat-select placeholder="Select Organization" name="org_id" [(ngModel)]="postData.org_id">
+                <mat-select placeholder="Select Organization" name="org_id" [(ngModel)]="postData.org_id" (selectionChange)="getCampaignDD(postData.org_id)">
                   <mat-option *ngFor="let organization of organizations" value="{{organization.id}}">{{organization.org_name}}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -59,7 +59,7 @@
           </mat-card-content>
           <mat-card-actions>
             <button type="submit" mat-raised-button color="primary" (click)="addPost()" class="mb-3 ml-3">{{formBtn}}</button>
-            <a [routerLink]="['/app/campaigns/:id/posts', postData.id]" mat-raised-button class="btn float-right mr-3">Cancel</a>
+            <a routerLink="/app/campaigns/" mat-raised-button class="btn float-right mr-3">Cancel</a>
           </mat-card-actions>
         </mat-card>
       </form>

@@ -60,6 +60,7 @@ export class PostComponent implements OnInit {
       console.log('data: ', data);
       if (data.status) {
         this.posts = data.data;
+        console.log('Post: ', this.posts);
       } else {
         this.posts = [];
       }
