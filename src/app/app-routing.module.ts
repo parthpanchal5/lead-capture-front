@@ -27,7 +27,7 @@ const routes: Route[] = [
       { path: 'organization-detail/:id', component: OrganizationDetailComponent },
       { path: 'campaigns', component: CampaignComponent },
       { path: 'organization/:id/campaigns', component: CampaignComponent },
-      { path: 'campaigns/:id/posts', component: PostComponent },
+      { path: 'campaign/:id/posts', component: PostComponent },
       { path: 'campaign-detail/:id', component: AddCampaignComponent },
       { path: 'post-detail/:id', component: AddPostComponent },
       { path: 'posts', component: PostComponent },

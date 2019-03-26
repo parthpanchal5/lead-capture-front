@@ -73,6 +73,9 @@ export class AddCampaignComponent implements OnInit {
     if (!this.campaignData.org_id || this.campaignData.org_id === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please Select Organization', title: 'Required'});
       return;
+    } else {
+      formdata.append('org_id', this.campaignData.org_id);
+      console.log('Appended Org id: ', this.campaignData.org_id);
     }
     if (!this.campaignData.title || this.campaignData.title === '') {
       this.mainComponent.alertMessage({type: 'error', message: 'Please enter campaign title', title: 'Required'});

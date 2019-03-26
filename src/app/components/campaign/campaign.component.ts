@@ -49,6 +49,7 @@ export class CampaignComponent implements OnInit {
     if ( search ) {
       if (search.orgId !== '' && search.orgId !== null) {
         queryTmp.push('org_id=' + search.orgId);
+        console.log('se')
       }
     }
     console.log('query : ', queryTmp.join('&'));
@@ -56,6 +57,7 @@ export class CampaignComponent implements OnInit {
       console.log('data: ', data);
       if (data.status) {
         this.campaigns = data.data;
+        console.log('camoaifn: ', this.campaigns);
       } else {
         this.campaigns = [];
       }
@@ -78,6 +80,7 @@ export class CampaignComponent implements OnInit {
         this.campaigns = this.campaigns.filter((item) => {
           return item.id !== id;
         });
+        this.router.navigate(['/app/campaigns']);
       } else {
         this.mainComponent.alertMessage({title: 'Operation Failed', message: data.message, type: 'error'});
       }

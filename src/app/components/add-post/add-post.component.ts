@@ -61,6 +61,8 @@ export class AddPostComponent implements OnInit {
         this.campaigns = data.data.campaigns;
         // tslint:disable-next-line:max-line-length
         this.postData.org_id = (this.postData.org_id) ? this.postData.org_id.toString() : ((this.organizations && this.organizations.length > 0) ? this.organizations[0].id.toString() : '');
+        // tslint:disable-next-line:max-line-length
+        this.postData.campaign_id = (this.postData.campaign_id) ? this.postData.campaign_id.toString() : ((this.campaigns && this.campaigns.length > 0) ? this.campaigns[0].id.toString() : '');
         this.getCampaignDD(this.postData.org_id);
       } else {
         this.postData = {

@@ -14,7 +14,7 @@ export class PostComponent implements OnInit {
 
   posts = [];
   search = {
-    orgId: ''
+    campaignId: ''
   };
 
   constructor(
@@ -35,10 +35,10 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
-    const orgId = this.route.snapshot.paramMap.get('id');
-    console.log('Org id: ', orgId);
-    if ( orgId) {
-      this.search.orgId = orgId;
+    const campaignId = this.route.snapshot.paramMap.get('id');
+    console.log('Campaign id: ', campaignId);
+    if ( campaignId) {
+      this.search.campaignId = campaignId;
     }
     this.getPosts(1, this.search);
   }
@@ -51,16 +51,16 @@ export class PostComponent implements OnInit {
     const queryTmp = [''];
     queryTmp.push('page=' + ( (page) ? page : 1 ));
     if (search) {
-      if (search.orgId !== '' && search.orgId !== null) {
-        queryTmp.push('org_id=' + search.orgId);
+      if (search.campaignId !== '' && search.campaignId !== null) {
+        queryTmp.push('campaign_id=' + search.campaignId);
       }
     }
 
     this.postService.getPosts(queryTmp.join('&')).subscribe((data) => {
-      console.log('data: ', data);
+      // console.log('data: ', data);
       if (data.status) {
         this.posts = data.data;
-        console.log('Post: ', this.posts);
+        // console.log('Post: ', this.posts);
       } else {
         this.posts = [];
       }

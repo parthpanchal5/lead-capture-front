@@ -38,6 +38,7 @@ export class OrganizationComponent implements OnInit {
       console.log('data: ', data);
       if (data.status) {
         this.organizations = data.data;
+        // console.log('hellooooo1' , this.organizations);
       } else {
         this.organizations = [];
       }

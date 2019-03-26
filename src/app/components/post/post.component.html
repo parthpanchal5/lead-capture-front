@@ -3,13 +3,14 @@
     <div class="col-md-12">
       <a routerLink="/app/add-post" mat-raised-button color="primary" class="btn float-right mb-4"><mat-icon>add</mat-icon> Create Post</a>
       <a  mat-raised-button color="warn" class="btn float-right mr-4"><mat-icon>filter_list</mat-icon> Filters</a>
-      <table class="table table-hover table-striped table-bordered">
+      <table class="table table-hover table-striped table-bordered table-responsive">
         <thead>
           <tr>
-            <th style="max-width: 55px; text-align: center;"># Sr.no</th>
+            <th style="max-width: 55px; text-align: center;">#</th>
             <th class="text-center">Post Name</th>
             <th class="text-center">Post Desc</th>
-            <th class="text-center">Post Type</th>
+            <th class="text-center">Type</th>
+            <th class="text-center">Posted on</th>
             <th class="text-center">Post Content</th>
             <th class="text-center">Post Link</th>
             <th class="text-center">Status</th>
@@ -22,6 +23,7 @@
             <td>{{ post.title }}</td>
             <td>{{ post.post_desc }}</td>
             <td>{{ post.post_type }}</td>
+            <td>{{ post.posted_on }}</td>
             <td>{{ post.post_content }}</td>
             <td class="text-center"><a style="text-decoration: none;" mat-raised-button color="" (click)="openRepDialog(post.id)">Link <mat-icon>link</mat-icon></a></td>
             <td id="option">
@@ -38,10 +40,10 @@
             </td>
           </tr>
           <tr *ngIf="posts.docs.length<=0">
-            <th class="text-center" colspan="8"><h5>No Data Found</h5></th>
+            <th class="text-center" colspan="9"><h5>No Data Found</h5></th>
           </tr>
           <tr>
-            <td colspan="8">
+            <td colspan="9">
               <mat-paginator [hidePageSize]='0'  [length]="posts.total"
               [pageSize]="posts.limit" [pageIndex]="posts.page-1" (page)="pageEvent = PageHandler($event)"></mat-paginator>
             </td>
