@@ -71,32 +71,32 @@ export class AddCampaignComponent implements OnInit {
   addCamp() {
     const formdata = new FormData();
     if (!this.campaignData.org_id || this.campaignData.org_id === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please Select Organization', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Select Organization', title: 'Required: '});
       return;
     } else {
       formdata.append('org_id', this.campaignData.org_id);
       console.log('Appended Org id: ', this.campaignData.org_id);
     }
     if (!this.campaignData.title || this.campaignData.title === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter campaign title', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Campaign title', title: 'Required: '});
       return;
     } else {
       formdata.append('title', this.campaignData.title);
     }
     if (!this.campaignData.camp_desc || this.campaignData.camp_desc === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter campaign description', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Campaign Description', title: 'Required: '});
       return;
     } else {
       formdata.append('camp_desc', this.campaignData.camp_desc);
     }
     if (!this.campaignData.landing_page_url || this.campaignData.landing_page_url === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter URL', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter URL', title: 'Required: '});
       return;
     } else {
       formdata.append('landing_page_url', this.campaignData.landing_page_url);
     }
     if (!this.campaignData.remark || this.campaignData.remark === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter remark', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Remark', title: 'Required: '});
       return;
     } else {
       formdata.append('remark', this.campaignData.remark);

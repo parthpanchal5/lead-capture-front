@@ -9,7 +9,7 @@
             <th style="max-width: 10px; text-align: center;">#</th>
             <th>Organization Name</th>
             <th>Campaigns</th>
-            <th>Status</th>
+            <th class="text-center">Status</th>
             <th class="text-center">Action</th>
           </tr>
         </thead>
@@ -18,9 +18,9 @@
             <td style="max-width: 14px; text-align: center;">{{ ((organizations.page-1)*organizations.limit)+(i+1) }}</td>
             <td>{{ organization.org_name }}</td>
             <td><a [routerLink]="['/app/organization',organization.id,'campaigns']">{{ organization.campaigns }} - Campaign</a></td>
-            <td id="option">
-              <mat-form-field>
-                <mat-select placeholder="Status">
+            <td style="padding: 10px; width: 18px;">
+              <mat-form-field style="max-width: 90px;">
+                <mat-select style="max-width: 90px; font-size: 13px;" placeholder="Status">
                   <mat-option value="1">Enable</mat-option>
                   <mat-option value="-1">Disable</mat-option>
                 </mat-select>

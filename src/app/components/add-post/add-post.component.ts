@@ -83,7 +83,7 @@ export class AddPostComponent implements OnInit {
       console.log('Error: ', error);
     });
   }
-  getCampaignDD(orgid){
+  getCampaignDD(orgid) {
     this.campaignService.getCampaignDD(orgid).subscribe((data) => {
       console.log('data campaign : ', data);
       if (data.status) {
@@ -107,49 +107,49 @@ export class AddPostComponent implements OnInit {
 
     console.log('post data : ', this.postData);
     if (!this.postData.org_id || this.postData.org_id === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please Select Organization', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Select Organization', title: 'Required: '});
       return;
     } else {
       formdata.append('org_id', this.postData.org_id);
     }
     if (!this.postData.campaign_id || this.postData.campaign_id === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please select Post campaign', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please select Post Campaign', title: 'Required: '});
       return;
     } else {
       formdata.append('campaign_id', this.postData.campaign_id);
     }
     if (!this.postData.title || this.postData.title === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post Title', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post Title', title: 'Required: '});
       return;
     } else {
       formdata.append('title', this.postData.title);
     }
     if (!this.postData.post_desc || this.postData.post_desc === '') {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post Description', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post Description', title: 'Required: '});
       return;
     } else {
       formdata.append('post_desc', this.postData.post_desc);
     }
     if (!this.postData.post_type || this.postData.post_type === '' ) {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post type', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post type', title: 'Required: '});
       return;
     } else {
       formdata.append('post_type', this.postData.post_type);
     }
     if (!this.postData.track_id || this.postData.track_id === '' ) {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post link', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post link', title: 'Required: '});
       return;
     } else {
       formdata.append('track_id', this.postData.track_id);
     }
     if (!this.postData.post_content || this.postData.post_content === '' ) {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post content', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post content', title: 'Required: '});
       return;
     } else {
       formdata.append('post_content', this.postData.post_content);
     }
     if (!this.postData.remark || this.postData.remark === '' ) {
-      this.mainComponent.alertMessage({type: 'error', message: 'Please enter post remark', title: 'Required'});
+      this.mainComponent.alertMessage({type: 'error', message: 'Please Enter Post remark', title: 'Required: '});
       return;
     } else {
       formdata.append('remark', this.postData.remark);
