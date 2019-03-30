@@ -14,7 +14,7 @@ import { CampaignComponent } from './components/campaign/campaign.component';
 import { AddCampaignComponent } from './components/add-campaign/add-campaign.component';
 
 const routes: Route[] = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/app', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'forgot-pass', component: ForgotPassComponent },
   { path: 'app', redirectTo: '/app/dashboard', pathMatch: 'full' },
