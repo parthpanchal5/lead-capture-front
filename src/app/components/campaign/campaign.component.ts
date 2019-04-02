@@ -1,3 +1,4 @@
+import { ChartComponent } from './chart/chart.component';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
 import { CampaignService } from 'src/app/services/campaign.service';
@@ -33,6 +34,12 @@ export class CampaignComponent implements OnInit {
     this.getCampaigns(1, this.search);
   }
 
+  openReportDialog() {
+    const dialogRef = this.dialog.open(ChartComponent, {
+      width: '720px'
+    });
+    dialogRef.afterClosed();
+  }
    // Open Dialog
    openRepDialog(campId) {
     const dialogRef = this.dialog.open(CampDialogComponent, {
@@ -49,7 +56,6 @@ export class CampaignComponent implements OnInit {
     if ( search ) {
       if (search.orgId !== '' && search.orgId !== null) {
         queryTmp.push('org_id=' + search.orgId);
-        console.log('se')
       }
     }
     console.log('query : ', queryTmp.join('&'));
@@ -57,7 +63,7 @@ export class CampaignComponent implements OnInit {
       console.log('data: ', data);
       if (data.status) {
         this.campaigns = data.data;
-        console.log('camoaifn: ', this.campaigns);
+        console.log('campaigns: ', this.campaigns);
       } else {
         this.campaigns = [];
       }

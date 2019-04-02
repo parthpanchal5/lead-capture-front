@@ -22,7 +22,7 @@
             <td>{{ campaign.title }}</td>
             <td>{{ campaign.camp_desc }}</td>
             <td><a class="link" (click)="openRepDialog(campaign.id)">{{campaign.landing_page_url}}</a></td>
-            <td><a class="link" (click)="openRep" mat-button mat-raised-button style="text-decoration: none;">Open Report</a></td>
+            <td><a class="link" (click)="openReportDialog()" mat-button mat-raised-button style="text-decoration: none;">Open Report</a></td>
             <td class="text-center"> <a [routerLink]="['/app/campaign', campaign.id, 'posts']"> {{campaign.posts}} - Posts</a></td>
             <td>{{ campaign.remark }}</td>
             <td class="button-row">

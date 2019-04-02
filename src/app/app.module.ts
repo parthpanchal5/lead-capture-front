@@ -19,6 +19,8 @@ import { OrgDialogComponent } from './components/organization/org-dialog/org-dia
 import { CampFilterComponent } from './components/campaign/camp-filter/camp-filter.component';
 import { CampDialogComponent } from './components/campaign/camp-dialog/camp-dialog.component';
 import { PostDialogComponent } from './components/post/post-dialog/post-dialog.component';
+import { ChartComponent } from './components/campaign/chart/chart.component';
+
 
 // Module
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,6 +33,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 
 // Services
 import { LoginService } from './services/login.service';
@@ -57,7 +60,8 @@ import { CommanService } from './services/comman.service';
     OrgDialogComponent,
     CampFilterComponent,
     CampDialogComponent,
-    PostDialogComponent
+    PostDialogComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,14 @@ import { CommanService } from './services/comman.service';
     MatInputModule,
     MatFileUploadModule,
     FormsModule,
+    ChartsModule,
     SweetAlert2Module.forRoot()
+  ],
+  exports: [
+    ChartComponent
+  ],
+  entryComponents: [
+    ChartComponent
   ],
   providers: [LoginService, TokenService, CommanService],
   bootstrap: [AppComponent]

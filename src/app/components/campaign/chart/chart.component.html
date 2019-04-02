@@ -1,0 +1,19 @@
+
+<div mat-dialog-content>
+  <div>
+      <div style="display: block;">
+        <canvas 
+          baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+    
+        </canvas>
+      </div>
+    </div>
+    <br><br>
+  <a mat-raised-button	(click)="onNoClick()" color="secondary" class="btn float-right  ml-1">Cancel</a><br><br>
+</div>
+
