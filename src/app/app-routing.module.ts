@@ -37,6 +37,7 @@ const routes: Route[] = [
       { path: 'pass-reset', component: PassResetComponent }
     ]
   },
+  { path: '**', component: DashboardComponent }
 
 ];
 

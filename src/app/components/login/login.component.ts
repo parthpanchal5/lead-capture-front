@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
       if (data.status) {
         // this.alertMessage('Success.', data.message, 'success');
         localStorage.setItem('Token', data.token);
+        localStorage.setItem('UserData', JSON.stringify(data.data));
         this.router.navigate(['/app']);
       } else {
         this.alertMessage('Failed.',  data.message, 'error');

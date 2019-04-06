@@ -19,7 +19,10 @@ export class MainComponent implements OnInit {
     type: ''
   };
   profile = {};
-  constructor(private profileService: ProfileService, private router: Router, private token: TokenService) { }
+  constructor(
+    private profileService: ProfileService,
+    private router: Router,
+    private token: TokenService) { }
   ngOnInit() {
     this.tempToken = localStorage.getItem('Token');
     console.log(localStorage.getItem('Token'), this.tempToken);

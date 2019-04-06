@@ -25,6 +25,8 @@ export class CampaignService {
     return this.http
       .get<{status: boolean, message: string, data: []}>(API_URL + '/campaign-dd/' + orgid + '?auth=' + this.token.getToken());
   }
+
+
   // Individual campaigns
   public getCampaignDtl(id) {
     return this.http

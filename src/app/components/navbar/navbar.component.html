@@ -9,7 +9,7 @@
       <mat-menu #menu="matMenu" id="menu-items">
         <a mat-menu-item (click)="getUserData()">Hi {{ profile.name }}</a>
         <a mat-menu-item routerLink="/app/pass-reset">Password Reset</a>
-        <a   mat-menu-item>Logout</a>
+        <a mat-menu-item (click)="logout()">Logout</a>
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>

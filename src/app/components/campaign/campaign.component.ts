@@ -13,8 +13,11 @@ import { CampDialogComponent } from './camp-dialog/camp-dialog.component';
 export class CampaignComponent implements OnInit {
 
   campaigns = [];
+
+  campaignLeads = [];
   search = {
-    orgId: ''
+    orgId: '',
+    campid: ''
   };
 
   constructor(
@@ -27,13 +30,21 @@ export class CampaignComponent implements OnInit {
 
   ngOnInit() {
     const orgId = this.route.snapshot.paramMap.get('id');
-    console.log('Org id : ', orgId);
+    const campid = this.route.snapshot.paramMap.get('id');
+    console.log('Org campid : ', orgId);
     if ( orgId) {
       this.search.orgId = orgId;
+    }
+    if (campid) {
+      this.search.campid = campid;
+    }
+    if (campid) {
+      this.getCampaigns(1, this.search);
     }
     this.getCampaigns(1, this.search);
   }
 
+  // Report
   openReportDialog() {
     const dialogRef = this.dialog.open(ChartComponent, {
       width: '720px'
@@ -48,7 +59,19 @@ export class CampaignComponent implements OnInit {
     });
     dialogRef.afterClosed();
   }
-
+  // public getCampaignLeadCounts(campid) {
+  //   this.campaignService.getCampaignLeadCounts(campid).subscribe((data) => {
+  //     console.log('Lead data: ', data);
+  //     if (data.status) {
+  //       this.campaignLeads = data.data;
+  //       console.log('Leads : ', this.campaignLeads);
+  //     } else {
+  //       this.campaignLeads = [];
+  //     }
+  //   }, error => {
+  //     console.log('Error: ', error);
+  //   });
+  // }
   // Get all Campaigns
   public getCampaigns(page, search) {
     const queryTmp = [''];

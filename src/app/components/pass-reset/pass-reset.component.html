@@ -8,17 +8,17 @@
          <form>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Enter Current Password</mat-label>
-              <input matInput autocomplete="off" type="password">
+              <input matInput [(ngModel)]="formData.oldPass" name="oldPass" autocomplete="off" type="password">
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Enter New Password</mat-label>
-              <input matInput autocomplete="off" type="password">
+              <input matInput [(ngModel)]="formData.newPass" name="newPass" autocomplete="off" type="password">
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Confirm New Password</mat-label>
-              <input matInput autocomplete="off" type="password">
+              <input matInput [(ngModel)]="confirmPass" name="confirmPass" autocomplete="off" type="password">
             </mat-form-field>
-            <button type="submit" class="mt-2 mb-4" mat-raised-button	color="primary">Change Password</button>
+            <button type="submit" (click)="passreset()" class="mt-2 mb-4" mat-raised-button	color="primary">Change Password</button>
             <a routerLink="/app/dashboard" mat-raised-button	color="secondary" class="btn text-muted ml-4">Cancel</a>
          </form>
         </mat-card-content>
