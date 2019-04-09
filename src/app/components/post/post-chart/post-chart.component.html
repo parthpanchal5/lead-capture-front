@@ -1,0 +1,19 @@
+
+<div mat-dialog-content animated fadeIn>
+  <div>
+      <div style="display: block;">
+        <canvas 
+        baseChart
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          [colors]="lineChartColors"
+        >
+        </canvas>
+      </div>
+    </div>
+    <br>
+  <a mat-raised-button	(click)="onNoClick()" color="secondary" class="btn float-right  ml-1">Cancel</a><br><br>
+</div> 

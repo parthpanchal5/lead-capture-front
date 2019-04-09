@@ -62,6 +62,14 @@ export class PostService {
       .delete<{status: boolean, message: string}>(API_URL + '/post/' + id + '?auth=' + this.token.getToken());
   }
 
+  public postChart(id) {
+    return this.http
+      .get<{
+        status: boolean,
+        message: string,
+        data: {}
+      }>(API_URL + '/post-chart/' + id + '?auth=' + this.token.getToken());
+  }
   // Status post
   public statusPost(id, status) {
     return this.http

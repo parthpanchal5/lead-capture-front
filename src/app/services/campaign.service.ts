@@ -62,4 +62,17 @@ export class CampaignService {
     return this.http
       .get<{status: boolean, message: string}>(API_URL + '/campaign/' + id + '/status/' + status + '?auth=' + this.token.getToken());
   }
+  // Status campaigns
+  public CampaignChart(id) {
+    return this.http
+      .get<{
+        status: boolean,
+        message: string,
+        data: [{
+          title: string,
+          leads: string,
+          enquires: string
+        }]
+      }>(API_URL + '/campaign-chart/' + id + '?auth=' + this.token.getToken());
+  }
 }

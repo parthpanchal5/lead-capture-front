@@ -39,6 +39,7 @@ import { ChartsModule } from 'ng2-charts';
 import { LoginService } from './services/login.service';
 import { TokenService } from './token';
 import { CommanService } from './services/comman.service';
+import { PostChartComponent } from './components/post/post-chart/post-chart.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { CommanService } from './services/comman.service';
     CampFilterComponent,
     CampDialogComponent,
     PostDialogComponent,
-    ChartComponent
+    ChartComponent,
+    PostChartComponent
   ],
   imports: [
     BrowserModule,
@@ -76,10 +78,12 @@ import { CommanService } from './services/comman.service';
     SweetAlert2Module.forRoot()
   ],
   exports: [
-    ChartComponent
+    ChartComponent,
+    PostChartComponent
   ],
   entryComponents: [
-    ChartComponent
+    ChartComponent,
+    PostChartComponent
   ],
   providers: [LoginService, TokenService, CommanService],
   bootstrap: [AppComponent]

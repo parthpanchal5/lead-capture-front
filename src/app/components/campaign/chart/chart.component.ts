@@ -1,7 +1,7 @@
+import { CampaignService } from './../../../services/campaign.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Inject } from '@angular/core';
-
 
 @Component({
   selector: 'app-chart',
@@ -14,17 +14,42 @@ export class ChartComponent implements OnInit {
     responsive: true
   };
 
-  public barChartLabels = ['20-3-19', '21-3-19', '22-3-19', '23-3-19', '24-3-19', '25-3-19'];
-  public barChartType = 'line';
+  public barChartLabels = [];
+  public barChartType = 'bar';
   public barChartLegend = true;
   public barChartData = [
-    { data: [10, 15, 16, 50, 5, 3], label: 'PUBG Campaign' },
+    { data: [], label: 'Lead' },
+    { data: [], label: 'Enquiry' }
   ];
   constructor(
     public dialogRef: MatDialogRef<ChartComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {id: string}) { }
+    @Inject(MAT_DIALOG_DATA) public camp: string,
+    public campaignService: CampaignService) { }
 
   ngOnInit() {
+    // console.log('Id: ', this.camp);
+    this.getCampaignChart(this.camp);
+  }
+
+  getCampaignChart(id) {
+    this.campaignService.CampaignChart(id).subscribe((data) => {
+      console.log('data: ', data);
+      if (data.status) {
+        this.barChartLabels = data.data.map((item) => {
+          return item.title;
+        });
+        this.barChartData[0].data = data.data.map((item) => {
+          return item.leads;
+        });
+        this.barChartData[1].data = data.data.map((item) => {
+          return item.enquires;
+        });
+      } else {
+
+      }
+    }, error => {
+      console.log('Error: ', error);
+    });
   }
 
   onNoClick(): void {

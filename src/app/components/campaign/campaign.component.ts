@@ -45,9 +45,10 @@ export class CampaignComponent implements OnInit {
   }
 
   // Report
-  openReportDialog() {
+  openReportDialog(campId) {
     const dialogRef = this.dialog.open(ChartComponent, {
-      width: '720px'
+      width: '720px',
+      data: campId
     });
     dialogRef.afterClosed();
   }
@@ -59,19 +60,7 @@ export class CampaignComponent implements OnInit {
     });
     dialogRef.afterClosed();
   }
-  // public getCampaignLeadCounts(campid) {
-  //   this.campaignService.getCampaignLeadCounts(campid).subscribe((data) => {
-  //     console.log('Lead data: ', data);
-  //     if (data.status) {
-  //       this.campaignLeads = data.data;
-  //       console.log('Leads : ', this.campaignLeads);
-  //     } else {
-  //       this.campaignLeads = [];
-  //     }
-  //   }, error => {
-  //     console.log('Error: ', error);
-  //   });
-  // }
+
   // Get all Campaigns
   public getCampaigns(page, search) {
     const queryTmp = [''];

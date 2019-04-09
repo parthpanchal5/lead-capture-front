@@ -1,10 +1,11 @@
+import { PostChartComponent } from './post-chart/post-chart.component';
+import { ChartComponent } from './../campaign/chart/chart.component';
 import { PostService } from './../../services/post.service';
 import { MainComponent } from './../main/main.component';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
-
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -14,7 +15,8 @@ export class PostComponent implements OnInit {
 
   posts = [];
   search = {
-    campaignId: ''
+    campaignId: '',
+    postId: ''
   };
 
   constructor(
@@ -44,7 +46,13 @@ export class PostComponent implements OnInit {
   }
 
   // Dialog
-
+  openReportDialog(postId) {
+    const dialogRef = this.dialog.open(PostChartComponent, {
+      width: '820px',
+      data: postId
+    });
+    dialogRef.afterClosed();
+  }
 
    // Get all Orgaizations
    public getPosts(page, search) {
