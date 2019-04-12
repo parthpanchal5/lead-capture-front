@@ -14,9 +14,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddCampaignComponent } from './components/add-campaign/add-campaign.component';
 import { PassResetComponent } from './components/pass-reset/pass-reset.component';
 import { PostComponent } from './components/post/post.component';
-import { OrgFilterComponent } from './components/organization/org-filter/org-filter.component';
 import { OrgDialogComponent } from './components/organization/org-dialog/org-dialog.component';
-import { CampFilterComponent } from './components/campaign/camp-filter/camp-filter.component';
 import { CampDialogComponent } from './components/campaign/camp-dialog/camp-dialog.component';
 import { PostDialogComponent } from './components/post/post-dialog/post-dialog.component';
 import { ChartComponent } from './components/campaign/chart/chart.component';
@@ -52,14 +50,12 @@ import { PostChartComponent } from './components/post/post-chart/post-chart.comp
     OrganizationComponent,
     AddOrganizationComponent,
     CampaignComponent,
-    OrgFilterComponent,
     PostComponent,
     AddPostComponent,
     AddCampaignComponent,
     PassResetComponent,
     OrganizationDetailComponent,
     OrgDialogComponent,
-    CampFilterComponent,
     CampDialogComponent,
     PostDialogComponent,
     ChartComponent,
@@ -85,7 +81,10 @@ import { PostChartComponent } from './components/post/post-chart/post-chart.comp
     ChartComponent,
     PostChartComponent
   ],
-  providers: [LoginService, TokenService, CommanService],
+  providers: [
+    LoginService,
+    TokenService,
+    CommanService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

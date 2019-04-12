@@ -38,10 +38,10 @@
             </td>
           </tr>
           <tr *ngIf="posts.docs.length<=0">
-            <th class="text-center" colspan="7"><h5>No Data Found</h5></th>
+            <th class="text-center" colspan="8"><h5>No Data Found</h5></th>
           </tr>
           <tr>
-            <td colspan="7">
+            <td colspan="8">
               <mat-paginator [hidePageSize]='0'  [length]="posts.total"
               [pageSize]="posts.limit" [pageIndex]="posts.page-1" (page)="pageEvent = PageHandler($event)"></mat-paginator>
             </td>

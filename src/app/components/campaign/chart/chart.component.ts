@@ -18,8 +18,8 @@ export class ChartComponent implements OnInit {
   public barChartType = 'bar';
   public barChartLegend = true;
   public barChartData = [
-    { data: [], label: 'Lead' },
-    { data: [], label: 'Enquiry' }
+    { data: [], label: 'Views' },
+    { data: [], label: 'Leads' }
   ];
   constructor(
     public dialogRef: MatDialogRef<ChartComponent>,

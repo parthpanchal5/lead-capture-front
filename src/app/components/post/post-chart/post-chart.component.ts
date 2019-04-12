@@ -12,8 +12,8 @@ export class PostChartComponent implements OnInit {
     responsive: true
   };
   public lineChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Lead'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Enquiry'},
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Views'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Leads'},
   ];
   public lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartType = 'line';
