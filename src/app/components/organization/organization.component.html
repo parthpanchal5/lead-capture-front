@@ -9,7 +9,7 @@
             <th style="max-width: 10px; text-align: center;">#</th>
             <th>Organization Name</th>
             <th>Campaigns</th>
-            <th class="text-center">Status</th>
+            <!-- <th class="text-center">Status</th> -->
             <th class="text-center">Action</th>
           </tr>
         </thead>
@@ -18,14 +18,14 @@
             <td style="max-width: 14px; text-align: center;">{{ ((organizations.page-1)*organizations.limit)+(i+1) }}</td>
             <td>{{ organization.org_name }}</td>
             <td><a [routerLink]="['/app/organization',organization.id,'campaigns']">{{ organization.campaigns }} - Campaign</a></td>
-            <td style="padding: 10px; width: 18px;">
+            <!-- <td style="padding: 10px; width: 18px;">
               <mat-form-field style="max-width: 90px;">
                 <mat-select style="max-width: 90px; font-size: 13px;" placeholder="Status">
                   <mat-option value="1">Enable</mat-option>
                   <mat-option value="-1">Disable</mat-option>
                 </mat-select>
               </mat-form-field>
-            </td>
+            </td> -->
             <td class="button-row text-center">
               <a [routerLink]="['/app/organization-detail',organization.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
               <a (click)="deleteOrg(organization.id)" style="cursor: pointer;"><mat-icon  class="text-danger">delete_outline</mat-icon></a>     

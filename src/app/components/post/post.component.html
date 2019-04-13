@@ -12,7 +12,7 @@
             <th class="text-center">Post Content</th>
             <th class="text-center">Post Link</th>
             <th class="text-center">Post Report</th>
-            <th class="text-center">Status</th>
+            <!-- <th class="text-center">Status</th> -->
             <th>Action</th>
           </tr>
         </thead>
@@ -24,14 +24,14 @@
             <td>{{ post.post_content }}</td>
             <td class="text-center"><a style="text-decoration: none;" mat-raised-button color="" (click)="openRepDialog(post.id)">Link <mat-icon>link</mat-icon></a></td>
             <td><a class="link" (click)="openReportDialog(post.id)" mat-button mat-raised-button style="text-decoration: none;">Open Report</a></td>
-            <td style="padding: 10px;" >
+            <!-- <td style="padding: 10px;" >
               <mat-form-field style="max-width: 90px;">
                 <mat-select  style="max-width: 90px; font-size: 14px;" placeholder="Status">
                   <mat-option value="1">Enable</mat-option>
                   <mat-option value="-1">Disable</mat-option>
                 </mat-select>
               </mat-form-field>
-            </td>
+            </td> -->
             <td class="button-row">
               <a [routerLink]="['/app/post-detail', post.id]"><mat-icon class="text-primary">launch</mat-icon></a> 
               <a (click)="deletePost(post.id)" style="cursor: pointer;"><mat-icon class="text-danger">delete_outline</mat-icon></a> 
