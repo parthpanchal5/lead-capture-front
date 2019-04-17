@@ -57,9 +57,10 @@ export class OrganizationComponent implements OnInit {
     this.organizationService.deleteOrganization(id).subscribe((data) => {
       console.log('data: ', data);
       if (data.status) {
+        // this.router.navigate(['/app/organizations'], {relativeTo: this.route});
         this.mainComponent.alertMessage({title: 'Deleted', message: data.message, type: 'success'});
-        this.router.navigate(['/app/organizations']);
         this.organizations = this.organizations.filter((item) => {
+          this.router.navigate(['/app/organizations']);
           return item.id !== id;
         });
       } else {
